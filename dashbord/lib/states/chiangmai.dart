@@ -8,6 +8,7 @@ import 'package:dashbord/states/chonburi.dart';
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/manage_order.dart';
 import 'package:dashbord/states/setting_acc.dart';
+import 'package:dashbord/states/success_order.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -157,6 +158,23 @@ class _ChiangMaiState extends State<ChiangMai> {
                         },
                         child: Text(
                           'Setting Account',
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SuccessOrder()));
+                        },
+                        child: Text(
+                          'Success Order',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,

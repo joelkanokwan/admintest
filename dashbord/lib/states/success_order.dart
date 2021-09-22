@@ -3,28 +3,13 @@ import 'package:dashbord/states/bangkok.dart';
 import 'package:dashbord/states/chiangmai.dart';
 import 'package:dashbord/states/chonburi.dart';
 import 'package:dashbord/states/dashbord.dart';
-import 'package:dashbord/states/manage_order.dart';
 import 'package:dashbord/states/setting_acc.dart';
-import 'package:dashbord/states/success_order.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pie_chart/pie_chart.dart';
 
-class ChiangMaiPie extends StatefulWidget {
-  const ChiangMaiPie({Key? key}) : super(key: key);
+class SuccessOrder extends StatelessWidget {
+  const SuccessOrder({Key? key}) : super(key: key);
 
-  @override
-  _ChiangMaiPieState createState() => _ChiangMaiPieState();
-}
-
-class _ChiangMaiPieState extends State<ChiangMaiPie> {
-  Map<String, double> chiangmaidpie = {
-    'Total Revenue': 100000,
-    'Total Expense': 50000,
-    'Service Tax 3%': 3000,
-    'Vat 7%': 7000,
-    'Net Profit': 50000,
-  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,12 +109,7 @@ class _ChiangMaiPieState extends State<ChiangMaiPie> {
                       ),
                       SizedBox(height: 20),
                       TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ManageOrder()));
-                        },
+                        onPressed: () {},
                         child: Text(
                           'Manage Order',
                           style: GoogleFonts.lato(
@@ -175,12 +155,7 @@ class _ChiangMaiPieState extends State<ChiangMaiPie> {
                       ),
                       SizedBox(height: 20),
                       TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SuccessOrder()));
-                        },
+                        onPressed: () {},
                         child: Text(
                           'Success Order',
                           style: GoogleFonts.lato(
@@ -208,39 +183,132 @@ class _ChiangMaiPieState extends State<ChiangMaiPie> {
               ),
             ),
             Expanded(
-              flex: 20,
+              flex: 5,
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
                 color: Colors.black12,
-                child: Padding(
-                  padding: const EdgeInsets.all(30.0),
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Total Revenue History',
+                        'Success Order',
                         style: GoogleFonts.fredokaOne(
                           fontSize: 30,
                         ),
                       ),
                       SizedBox(height: 5),
-                      Text(
-                        'Current Year',
-                        style: GoogleFonts.lato(
-                          fontSize: 18,
+                      Container(
+                        margin: EdgeInsets.only(right: 100),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              child: Icon(Icons.search),
+                              margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
+                            ),
+                            Expanded(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Order Number',
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Colors.white,
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Success Order 2022',
+                          style: GoogleFonts.fredokaOne(
+                            fontSize: 30,
+                          )),
+                      SizedBox(height: 5),
                       Container(
-                        child: PieChart(
-                          dataMap: chiangmaidpie,
-                          chartRadius: MediaQuery.of(context).size.width / 4.4,
-                          legendOptions: LegendOptions(
-                            legendPosition: LegendPosition.bottom,
-                          ),
-                          chartValuesOptions: ChartValuesOptions(
-                            showChartValues: true,
-                          ),
+                        margin: EdgeInsets.only(right: 100),
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              child: Icon(Icons.search),
+                              margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
+                            ),
+                            Expanded(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Order Number',
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Colors.black12,
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Success Order 2023',
+                          style: GoogleFonts.fredokaOne(
+                            fontSize: 30,
+                          )),
+                      SizedBox(height: 5),
+                      Container(
+                        margin: EdgeInsets.only(right: 100),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              child: Icon(Icons.search),
+                              margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
+                            ),
+                            Expanded(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Order Number',
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
