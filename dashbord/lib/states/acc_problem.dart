@@ -208,7 +208,7 @@ class _AccountProblemState extends State<AccountProblem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Tempolary lock account',
+                            'Temporary lock account',
                             style: GoogleFonts.fredokaOne(
                               fontSize: 25,
                             ),
