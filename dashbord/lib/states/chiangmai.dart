@@ -235,16 +235,16 @@ class _ChiangMaiState extends State<ChiangMai> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
                                   ),
-                                  margin: EdgeInsets.symmetric(
+                                  margin: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 50),
                                   child: Center(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Text(
+                                         Text(
                                           'Total Revenue',
                                         ),
-                                        SizedBox(height: 20),
+                                        const SizedBox(height: 20),
                                         Text(
                                           'xxx',
                                         ),
@@ -256,7 +256,7 @@ class _ChiangMaiState extends State<ChiangMai> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
                                   ),
-                                  margin: EdgeInsets.symmetric(
+                                  margin: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 50),
                                   child: Center(
                                     child: Column(
@@ -265,7 +265,7 @@ class _ChiangMaiState extends State<ChiangMai> {
                                         Text(
                                           'Gross Profit 15%',
                                         ),
-                                        SizedBox(height: 20),
+                                         SizedBox(height: 20),
                                         Text(
                                           'xxx',
                                         ),
@@ -466,13 +466,14 @@ class _ChiangMaiState extends State<ChiangMai> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 25),
-                                    Icon(
+                                    const SizedBox(height: 25),
+                                    const Icon(
                                       Icons.location_on_outlined,
                                       color: Colors.orange,
                                       size: 23,
                                     ),
-                                    Icon(
+                                    
+                                    const Icon(
                                       Icons.fiber_manual_record,
                                       size: 10,
                                       color: Colors.orange,
