@@ -1,18 +1,16 @@
+import 'dart:html';
+
 import 'package:dashbord/pie/dashborad_pie.dart';
 import 'package:dashbord/dialog/edit_expense.dart';
 import 'package:dashbord/chart/dashbord_barchart.dart';
-import 'package:dashbord/pie/expense_pie.dart';
-import 'package:dashbord/states/acc_problem.dart';
-import 'package:dashbord/states/bangkok.dart';
-import 'package:dashbord/states/chiangmai.dart';
-import 'package:dashbord/states/chonburi.dart';
 import 'package:dashbord/states/manage_order.dart';
 import 'package:dashbord/states/setting_acc.dart';
-import 'package:dashbord/states/success_order.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pie_chart/pie_chart.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -22,28 +20,56 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  DateTime? date;
+  Map<String, double> dashboardpie = {
+    'ChiangMai': 100000,
+    'Chonburi': 50000,
+    'Bangkok': 3000,
+  };
 
-  String getDate() {
-    if (date == null) {
-      return 'Appointment Date';
-    } else {
-      return '${date!.day}/${date!.month}/${date!.year}';
-    }
+  late Map<DateTime, List<Event>> selectedEvents;
+  CalendarFormat format = CalendarFormat.month;
+  DateTime selectedDay = DateTime.now();
+  DateTime focusedDay = DateTime.now();
+  // TextEditingController _eventController = TextEditingController();
+
+  @override
+  void initState() {
+    selectedEvents = {};
+    super.initState();
   }
 
-  Future pickDate(BuildContext context) async {
-    final initialDate = DateTime.now();
-    final newDate = await showDatePicker(
-      context: context,
-      initialDate: initialDate,
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2022),
-    );
-    if (newDate == null) return;
-
-    setState(() => date = newDate);
+  List<Event> _getEventsfromDay(DateTime date) {
+    return selectedEvents[date] ?? [];
   }
+
+  // @override
+  // void dispose() {
+  // _eventController.dispose();
+  // super.dispose();
+  // }
+
+  // DateTime? date;
+
+  // String getDate() {
+  // if (date == null) {
+  // return 'Appointment Date';
+  // } else {
+  // return '${date!.day}/${date!.month}/${date!.year}';
+  // }
+  // }
+
+  // Future pickDate(BuildContext context) async {
+  // final initialDate = DateTime.now();
+  // final newDate = await showDatePicker(
+  // context: context,
+  // initialDate: initialDate,
+  // firstDate: DateTime.now(),
+  // lastDate: DateTime(2022),
+  // );
+  // if (newDate == null) return;
+
+  // setState(() => date = newDate);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -92,57 +118,6 @@ class _DashboardState extends State<Dashboard> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ChiangMai()));
-                        },
-                        child: Text(
-                          'ChiangMai',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Bangkok()));
-                        },
-                        child: Text(
-                          'Bangkok',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Chonburi()));
-                        },
-                        child: Text(
-                          'Chonburi',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
                                   builder: (context) => ManageOrder()));
                         },
                         child: Text(
@@ -160,44 +135,10 @@ class _DashboardState extends State<Dashboard> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AccountProblem()));
-                        },
-                        child: Text(
-                          'Account Problem',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
                                   builder: (context) => SettingAccount()));
                         },
                         child: Text(
                           'Setting Account',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SuccessOrder()));
-                        },
-                        child: Text(
-                          'Success Order',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
@@ -251,20 +192,20 @@ class _DashboardState extends State<Dashboard> {
                           Container(
                             child: GridView.count(
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               crossAxisCount: 5,
                               children: [
                                 Card(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
                                   ),
-                                  margin: EdgeInsets.symmetric(
+                                  margin: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 50),
                                   child: Center(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Text(
+                                        const Text(
                                           'Total Revenue',
                                         ),
                                         SizedBox(height: 20),
@@ -285,11 +226,11 @@ class _DashboardState extends State<Dashboard> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Text(
-                                          'Gross Profit 15%',
+                                        const Text(
+                                          'Net Profit',
                                         ),
-                                        SizedBox(height: 20),
-                                        Text(
+                                        const SizedBox(height: 20),
+                                        const Text(
                                           'xxx',
                                         ),
                                       ],
@@ -307,7 +248,7 @@ class _DashboardState extends State<Dashboard> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
-                                          'Service tax 3%',
+                                          'Omese fees',
                                         ),
                                         SizedBox(height: 20),
                                         Text(
@@ -390,6 +331,24 @@ class _DashboardState extends State<Dashboard> {
                             child: DashBoardBarChart(),
                           ),
                           SizedBox(height: 30),
+                          Row(
+                            children: [
+                              Container(
+                                child: PieChart(
+                                  dataMap: dashboardpie,
+                                  chartRadius:
+                                      MediaQuery.of(context).size.width / 6.4,
+                                  legendOptions: LegendOptions(
+                                    legendPosition: LegendPosition.right,
+                                  ),
+                                  chartValuesOptions: ChartValuesOptions(
+                                    showChartValues: true,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
                           Text(
                             'History',
                             style: GoogleFonts.fredokaOne(
@@ -417,6 +376,83 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             ],
                           ),
+                          SizedBox(height: 100),
+                          Text(
+                            'Order Created',
+                            style: GoogleFonts.fredokaOne(
+                              fontSize: 30,
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          GridView.count(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            crossAxisCount: 1,
+                            children: [
+                              TableCalendar(
+                                focusedDay: selectedDay,
+                                firstDay: DateTime(1990),
+                                lastDay: DateTime(2050),
+                                calendarFormat: format,
+                                onFormatChanged: (CalendarFormat _format) {
+                                  setState(() {
+                                    format = _format;
+                                  });
+                                },
+                                startingDayOfWeek: StartingDayOfWeek.sunday,
+                                daysOfWeekVisible: true,
+                                //Day Changed
+                                onDaySelected:
+                                    (DateTime selectDay, DateTime focusDay) {
+                                  setState(() {
+                                    selectedDay = selectDay;
+                                    focusedDay = focusDay;
+                                  });
+                                  print(focusedDay);
+                                },
+                                selectedDayPredicate: (DateTime date) {
+                                  return isSameDay(selectedDay, date);
+                                },
+                                eventLoader: _getEventsfromDay,
+                                //To style the Calendar
+                                calendarStyle: CalendarStyle(
+                                  isTodayHighlighted: true,
+                                  selectedDecoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  selectedTextStyle:
+                                      TextStyle(color: Colors.white),
+                                  todayDecoration: BoxDecoration(
+                                    color: Colors.purpleAccent,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  defaultDecoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  weekendDecoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                ),
+                                headerStyle: HeaderStyle(
+                                  formatButtonVisible: true,
+                                  titleCentered: true,
+                                  formatButtonShowsNext: false,
+                                  formatButtonDecoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  formatButtonTextStyle: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -431,124 +467,172 @@ class _DashboardState extends State<Dashboard> {
                 height: double.infinity,
                 color: Colors.black26,
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            pickDate(context);
-                          },
-                          icon: Icon(
-                            Icons.calendar_today_outlined,
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        IconButton(
-                          onPressed: () {
-                            EditExpense().normalDialog(context);
-                          },
-                          icon: Icon(
-                            Icons.edit,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Expense',
-                          style: GoogleFonts.fredokaOne(
-                            fontSize: 50,
-                          ),
-                        ),
-                        Divider(thickness: 2),
-                        Text(
-                          'Current month and year',
-                          style: GoogleFonts.lateef(
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          'Fixcost',
-                          style: GoogleFonts.fredokaOne(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Salary Boss Joel :',
-                          style: GoogleFonts.lateef(
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          'Salary Boss Eye :',
-                          style: GoogleFonts.lateef(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Variable cost',
-                          style: GoogleFonts.fredokaOne(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Firebase :',
-                          style: GoogleFonts.lateef(
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          'Others :',
-                          style: GoogleFonts.lateef(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Total Expense :',
-                          style: GoogleFonts.fredokaOne(
-                            fontSize: 20,
-                          ),
-                        ),
-                        Divider(thickness: 2),
-                        SizedBox(height: 5),
-                        Text(
-                          'History',
-                          style: GoogleFonts.fredokaOne(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ExpensePie()));
-                              },
-                              child: Text(
-                                '2021',
-                                style: GoogleFonts.lato(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                ),
-                              ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      // Row(
+                      // mainAxisAlignment: MainAxisAlignment.end,
+                      // children: [
+                      // IconButton(
+                      // onPressed: () {
+                      // pickDate(context);
+                      // },
+                      // icon: Icon(
+                      // Icons.calendar_today_outlined,
+                      // ),
+                      // ),
+                      // SizedBox(width: 10),
+                      // IconButton(
+                      // onPressed: () {
+                      // EditExpense().normalDialog(context);
+                      // },
+                      // icon: Icon(
+                      // Icons.edit,
+                      // ),
+                      // ),
+                      // ],
+                      // ),
+                      SizedBox(height: 30),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Ordering',
+                            style: GoogleFonts.fredokaOne(
+                              fontSize: 50,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+                          ),
+                          Divider(thickness: 2),
+                          Container(
+                            margin: EdgeInsets.only(right: 50),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  child: Icon(Icons.search),
+                                  margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
+                                ),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Order Number',
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            'Recent Today',
+                            style: GoogleFonts.fredokaOne(
+                              fontSize: 20,
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            'Collect Form',
+                            style: GoogleFonts.fredokaOne(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Divider(thickness: 2),
+                          SizedBox(height: 200),
+                          Text(
+                            'Check detail before pay',
+                            style: GoogleFonts.fredokaOne(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Divider(thickness: 2),
+                          // Text(
+                          // 'Current month and year',
+                          // style: GoogleFonts.lateef(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // Text(
+                          // 'Fixcost',
+                          // style: GoogleFonts.fredokaOne(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // SizedBox(height: 20),
+                          // Text(
+                          // 'Salary Boss Joel :',
+                          // style: GoogleFonts.lateef(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // Text(
+                          // 'Salary Boss Eye :',
+                          // style: GoogleFonts.lateef(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // SizedBox(height: 20),
+                          // Text(
+                          // 'Variable cost',
+                          // style: GoogleFonts.fredokaOne(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // SizedBox(height: 20),
+                          // Text(
+                          // 'Firebase :',
+                          // style: GoogleFonts.lateef(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // Text(
+                          // 'Others :',
+                          // style: GoogleFonts.lateef(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // SizedBox(height: 20),
+                          // Text(
+                          // 'Total Expense :',
+                          // style: GoogleFonts.fredokaOne(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // Divider(thickness: 2),
+                          // SizedBox(height: 5),
+                          // Text(
+                          // 'History',
+                          // style: GoogleFonts.fredokaOne(
+                          // fontSize: 20,
+                          // ),
+                          // ),
+                          // SizedBox(height: 20),
+                          // Row(
+                          // children: [
+                          // TextButton(
+                          // onPressed: () {
+                          // Navigator.push(
+                          // context,
+                          // MaterialPageRoute(
+                          // builder: (context) => ExpensePie()));
+                          // },
+                          // child: Text(
+                          // '2021',
+                          // style: GoogleFonts.lato(
+                          // fontSize: 15,
+                          // color: Colors.black,
+                          // ),
+                          // ),
+                          // ),
+                          // ],
+                          // ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

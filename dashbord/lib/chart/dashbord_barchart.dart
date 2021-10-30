@@ -63,7 +63,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 50000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -80,7 +80,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 30000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -97,7 +97,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 20000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -114,7 +114,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 20000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -131,7 +131,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 50000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -148,7 +148,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 40000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -165,7 +165,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 60000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -182,7 +182,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 1000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -199,7 +199,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 90000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -216,7 +216,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 15000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -233,7 +233,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 7000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -250,7 +250,7 @@ class DashBoardBarChart extends StatelessWidget {
               ),
               BarChartRodData(
                 y: 30000,
-                colors: [Colors.black],
+                colors: [Colors.redAccent],
                 width: 25,
                 borderRadius: BorderRadius.circular(0),
               ),

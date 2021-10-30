@@ -1,10 +1,8 @@
-import 'package:dashbord/states/acc_problem.dart';
-import 'package:dashbord/states/chiangmai.dart';
+
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/home.dart';
 import 'package:dashbord/states/manage_order.dart';
 import 'package:dashbord/states/setting_acc.dart';
-import 'package:dashbord/states/success_order.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Dashboard(),
     );

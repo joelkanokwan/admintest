@@ -1,12 +1,10 @@
-import 'package:dashbord/states/acc_problem.dart';
-import 'package:dashbord/states/bangkok.dart';
-import 'package:dashbord/states/chiangmai.dart';
-import 'package:dashbord/states/chonburi.dart';
+import 'dart:html';
+
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/setting_acc.dart';
-import 'package:dashbord/states/success_order.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class ManageOrder extends StatefulWidget {
   const ManageOrder({Key? key}) : super(key: key);
@@ -16,6 +14,21 @@ class ManageOrder extends StatefulWidget {
 }
 
 class _ManageOrderState extends State<ManageOrder> {
+  late Map<DateTime, List<Event>> selectedEvents;
+  CalendarFormat format = CalendarFormat.month;
+  DateTime selectedDay = DateTime.now();
+  DateTime focusedDay = DateTime.now();
+
+  @override
+  void initState() {
+    selectedEvents = {};
+    super.initState();
+  }
+
+  List<Event> _getEventsfromDay(DateTime date) {
+    return selectedEvents[date] ?? [];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,77 +77,9 @@ class _ManageOrderState extends State<ManageOrder> {
                       ),
                       SizedBox(height: 20),
                       TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ChiangMai()));
-                        },
-                        child: Text(
-                          'ChiangMai',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Bangkok()));
-                        },
-                        child: Text(
-                          'Bangkok',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Chonburi()));
-                        },
-                        child: Text(
-                          'Chonburi',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
                         onPressed: () {},
                         child: Text(
                           'Manage Order',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AccountProblem()));
-                        },
-                        child: Text(
-                          'Account Problem',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
@@ -152,23 +97,6 @@ class _ManageOrderState extends State<ManageOrder> {
                         },
                         child: Text(
                           'Setting Account',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SuccessOrder()));
-                        },
-                        child: Text(
-                          'Success Order',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
@@ -226,7 +154,7 @@ class _ManageOrderState extends State<ManageOrder> {
                                   child: Icon(Icons.search),
                                   margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
                                 ),
-                                Expanded(
+                                const Expanded(
                                   child: TextField(
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
@@ -237,119 +165,72 @@ class _ManageOrderState extends State<ManageOrder> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 30),
-                          Text(
-                            'Chiangmai',
-                            style: GoogleFonts.fredokaOne(
-                              fontSize: 20,
-                              color: Colors.orange,
-                            ),
-                          ),
-                          ListView(
+                          SizedBox(height: 20),
+                          GridView.count(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
+                            crossAxisCount: 1,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 700),
-                                child: Row(
-                                  children: [
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              'Jan 1',
-                                            ),
-                                            TextButton(
-                                                onPressed: () {},
-                                                child: Text('xxxxx')),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                              TableCalendar(
+                                focusedDay: selectedDay,
+                                firstDay: DateTime(1990),
+                                lastDay: DateTime(2050),
+                                calendarFormat: format,
+                                onFormatChanged: (CalendarFormat _format) {
+                                  setState(() {
+                                    format = _format;
+                                  });
+                                },
+                                startingDayOfWeek: StartingDayOfWeek.sunday,
+                                daysOfWeekVisible: true,
+                                //Day Changed
+                                onDaySelected:
+                                    (DateTime selectDay, DateTime focusDay) {
+                                  setState(() {
+                                    selectedDay = selectDay;
+                                    focusedDay = focusDay;
+                                  });
+                                  print(focusedDay);
+                                },
+                                selectedDayPredicate: (DateTime date) {
+                                  return isSameDay(selectedDay, date);
+                                },
+                                eventLoader: _getEventsfromDay,
+                                //To style the Calendar
+                                calendarStyle: CalendarStyle(
+                                  isTodayHighlighted: true,
+                                  selectedDecoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  selectedTextStyle:
+                                      TextStyle(color: Colors.white),
+                                  todayDecoration: BoxDecoration(
+                                    color: Colors.purpleAccent,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  defaultDecoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  weekendDecoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 250),
-                          Text(
-                            'Bangkok',
-                            style: GoogleFonts.fredokaOne(
-                              fontSize: 20,
-                              color: Colors.purple,
-                            ),
-                          ),
-                          ListView(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 700),
-                                child: Row(
-                                  children: [
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              'Jan 1',
-                                            ),
-                                            TextButton(
-                                                onPressed: () {},
-                                                child: Text('xxxxx')),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 250),
-                          Text(
-                            'Chonburi',
-                            style: GoogleFonts.fredokaOne(
-                              fontSize: 20,
-                              color: Colors.pink,
-                            ),
-                          ),
-                          ListView(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 700),
-                                child: Row(
-                                  children: [
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              'Jan 1',
-                                            ),
-                                            TextButton(
-                                                onPressed: () {},
-                                                child: Text('xxxxx')),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                headerStyle: HeaderStyle(
+                                  formatButtonVisible: true,
+                                  titleCentered: true,
+                                  formatButtonShowsNext: false,
+                                  formatButtonDecoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  formatButtonTextStyle: TextStyle(
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ],
