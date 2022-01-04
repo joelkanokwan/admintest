@@ -112,23 +112,23 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ManageOrder()));
-                        },
-                        child: Text(
-                          'Manage Order',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                      // SizedBox(height: 20),
+                      // TextButton(
+                      // onPressed: () {
+                      // Navigator.push(
+                      // context,
+                      // MaterialPageRoute(
+                      // builder: (context) => ManageOrder()));
+                      // },
+                      // child: Text(
+                      // 'Manage Order',
+                      // style: GoogleFonts.lato(
+                      // fontSize: 15,
+                      // color: Colors.black,
+                      // fontWeight: FontWeight.bold,
+                      // ),
+                      // ),
+                      // ),
                       SizedBox(height: 20),
                       TextButton(
                         onPressed: () {
@@ -227,7 +227,28 @@ class _DashboardState extends State<Dashboard> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
-                                          'Net Profit',
+                                          'Vat 7%',
+                                        ),
+                                        const SizedBox(height: 20),
+                                        const Text(
+                                          'xxx',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 50),
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Text(
+                                          'Service Tax 3%',
                                         ),
                                         const SizedBox(height: 20),
                                         const Text(
@@ -248,49 +269,28 @@ class _DashboardState extends State<Dashboard> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
-                                          'Omese fees',
-                                        ),
-                                        SizedBox(height: 20),
-                                        Text(
-                                          'xxx',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 50),
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
-                                          'Vat 7%',
-                                        ),
-                                        SizedBox(height: 20),
-                                        Text(
-                                          'xxx',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 50),
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
                                           'Allowance',
+                                        ),
+                                        SizedBox(height: 20),
+                                        Text(
+                                          'xxx',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 50),
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          'Net Profit',
                                         ),
                                         SizedBox(height: 20),
                                         Text(
@@ -374,6 +374,102 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                 ),
                               ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              DashboardPie()));
+                                },
+                                child: Text(
+                                  '2022',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 15,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              DashboardPie()));
+                                },
+                                child: Text(
+                                  '2023',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 15,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              DashboardPie()));
+                                },
+                                child: Text(
+                                  '2024',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 15,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              DashboardPie()));
+                                },
+                                child: Text(
+                                  '2025',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 15,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              DashboardPie()));
+                                },
+                                child: Text(
+                                  '2026',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 15,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              DashboardPie()));
+                                },
+                                child: Text(
+                                  '2027',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 15,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                           SizedBox(height: 100),
@@ -381,6 +477,29 @@ class _DashboardState extends State<Dashboard> {
                             'Order Created',
                             style: GoogleFonts.fredokaOne(
                               fontSize: 30,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 50),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  child: Icon(Icons.search),
+                                  margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
+                                ),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Order Number',
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           SizedBox(height: 20),
@@ -470,34 +589,12 @@ class _DashboardState extends State<Dashboard> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      // Row(
-                      // mainAxisAlignment: MainAxisAlignment.end,
-                      // children: [
-                      // IconButton(
-                      // onPressed: () {
-                      // pickDate(context);
-                      // },
-                      // icon: Icon(
-                      // Icons.calendar_today_outlined,
-                      // ),
-                      // ),
-                      // SizedBox(width: 10),
-                      // IconButton(
-                      // onPressed: () {
-                      // EditExpense().normalDialog(context);
-                      // },
-                      // icon: Icon(
-                      // Icons.edit,
-                      // ),
-                      // ),
-                      // ],
-                      // ),
                       SizedBox(height: 30),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Ordering',
+                            'Waiting Payment',
                             style: GoogleFonts.fredokaOne(
                               fontSize: 50,
                             ),
@@ -533,102 +630,6 @@ class _DashboardState extends State<Dashboard> {
                               fontSize: 20,
                             ),
                           ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Collect Form',
-                            style: GoogleFonts.fredokaOne(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Divider(thickness: 2),
-                          SizedBox(height: 200),
-                          Text(
-                            'Check detail before pay',
-                            style: GoogleFonts.fredokaOne(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Divider(thickness: 2),
-                          // Text(
-                          // 'Current month and year',
-                          // style: GoogleFonts.lateef(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // Text(
-                          // 'Fixcost',
-                          // style: GoogleFonts.fredokaOne(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // SizedBox(height: 20),
-                          // Text(
-                          // 'Salary Boss Joel :',
-                          // style: GoogleFonts.lateef(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // Text(
-                          // 'Salary Boss Eye :',
-                          // style: GoogleFonts.lateef(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // SizedBox(height: 20),
-                          // Text(
-                          // 'Variable cost',
-                          // style: GoogleFonts.fredokaOne(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // SizedBox(height: 20),
-                          // Text(
-                          // 'Firebase :',
-                          // style: GoogleFonts.lateef(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // Text(
-                          // 'Others :',
-                          // style: GoogleFonts.lateef(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // SizedBox(height: 20),
-                          // Text(
-                          // 'Total Expense :',
-                          // style: GoogleFonts.fredokaOne(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // Divider(thickness: 2),
-                          // SizedBox(height: 5),
-                          // Text(
-                          // 'History',
-                          // style: GoogleFonts.fredokaOne(
-                          // fontSize: 20,
-                          // ),
-                          // ),
-                          // SizedBox(height: 20),
-                          // Row(
-                          // children: [
-                          // TextButton(
-                          // onPressed: () {
-                          // Navigator.push(
-                          // context,
-                          // MaterialPageRoute(
-                          // builder: (context) => ExpensePie()));
-                          // },
-                          // child: Text(
-                          // '2021',
-                          // style: GoogleFonts.lato(
-                          // fontSize: 15,
-                          // color: Colors.black,
-                          // ),
-                          // ),
-                          // ),
-                          // ],
-                          // ),
                         ],
                       ),
                     ],

@@ -15,10 +15,12 @@ class DashboardPie extends StatefulWidget {
 class _DashboardPieState extends State<DashboardPie> {
   Map<String, double> dashboardpie = {
     'Total Revenue': 100000,
-    'Total Expense': 50000,
-    'Service Tax 3%': 3000,
-    'Vat 7%': 7000,
     'Net Profit': 50000,
+  };
+  Map<String, double> revenuepie = {
+    'ChiangMai': 100000,
+    'Bangkok': 200000,
+    'Chonburi': 105000,
   };
   @override
   Widget build(BuildContext context) {
@@ -59,23 +61,6 @@ class _DashboardPieState extends State<DashboardPie> {
                         },
                         child: Text(
                           'Dashboard',
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ManageOrder()));
-                        },
-                        child: Text(
-                          'Manage Order',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
@@ -141,17 +126,35 @@ class _DashboardPieState extends State<DashboardPie> {
                           fontSize: 18,
                         ),
                       ),
-                      Container(
-                        child: PieChart(
-                          dataMap: dashboardpie,
-                          chartRadius: MediaQuery.of(context).size.width / 4.4,
-                          legendOptions: LegendOptions(
-                            legendPosition: LegendPosition.bottom,
+                      Row(
+                        children: [
+                          Container(
+                            child: PieChart(
+                              dataMap: dashboardpie,
+                              chartRadius:
+                                  MediaQuery.of(context).size.width / 4.4,
+                              legendOptions: LegendOptions(
+                                legendPosition: LegendPosition.bottom,
+                              ),
+                              chartValuesOptions: ChartValuesOptions(
+                                showChartValues: true,
+                              ),
+                            ),
                           ),
-                          chartValuesOptions: ChartValuesOptions(
-                            showChartValues: true,
+                          Container(
+                            child: PieChart(
+                              dataMap: revenuepie,
+                              chartRadius:
+                                  MediaQuery.of(context).size.width / 4.4,
+                              legendOptions: LegendOptions(
+                                legendPosition: LegendPosition.bottom,
+                              ),
+                              chartValuesOptions: ChartValuesOptions(
+                                showChartValuesInPercentage: true,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dashbord/model/typetechnic_rray.dart';
 import 'package:dashbord/model/user_model.dart';
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/manage_order.dart';
@@ -26,6 +27,7 @@ class _SettingAccountState extends State<SettingAccount> {
   List<String> docIdBangKoks = [];
   List<String> docIdChonburis = [];
   final debouncer = Debouncer(millisecond: 500);
+  List<TypeTechnicArrayModel> typeTechnicArrayModels = [];
 
   @override
   void initState() {
@@ -44,6 +46,7 @@ class _SettingAccountState extends State<SettingAccount> {
       docIdChiangMais.clear();
       docIdBangKoks.clear();
       docIdChonburis.clear();
+      typeTechnicArrayModels.clear();
     }
     await FirebaseFirestore.instance
         .collection('user')
@@ -52,6 +55,9 @@ class _SettingAccountState extends State<SettingAccount> {
         .then((value) {
       for (var item in value.docs) {
         UserModel userModel = UserModel.fromMap(item.data());
+
+            TypeTechnicArrayModel typeTechnicArrayModel =
+        TypeTechnicArrayModel.fromMap(item.data());
         String docId = item.id;
         switch (userModel.province) {
           case 'เชียงใหม่':
@@ -59,6 +65,8 @@ class _SettingAccountState extends State<SettingAccount> {
               chiangMaiModels.add(userModel);
               acceptChiangMais.add(userModel.accept);
               docIdChiangMais.add(docId);
+               typeTechnicArrayModels.add(typeTechnicArrayModel);
+              
             });
 
             break;
@@ -360,21 +368,21 @@ class _SettingAccountState extends State<SettingAccount> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ManageOrder()));
-                },
-                child: Text(
-                  'Manage Order',
-                  style: GoogleFonts.lato(
-                    fontSize: 15,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // SizedBox(height: 20),
+              // TextButton(
+                // onPressed: () {
+                  // Navigator.push(context,
+                      // MaterialPageRoute(builder: (context) => ManageOrder()));
+                // },
+                // child: Text(
+                  // 'Manage Order',
+                  // style: GoogleFonts.lato(
+                    // fontSize: 15,
+                    // color: Colors.black,
+                    // fontWeight: FontWeight.bold,
+                  // ),
+                // ),
+              // ),
               SizedBox(height: 20),
               TextButton(
                 onPressed: () {},
@@ -419,7 +427,7 @@ class _SettingAccountState extends State<SettingAccount> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('JobType : ${model.jobType}'),
+            Text('JobType : ${model.typeTechnics}'),
             Text('Email : ${model.email}'),
           ],
         ),
