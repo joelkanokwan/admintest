@@ -1,9 +1,9 @@
 import 'dart:html';
 
 import 'package:dashbord/pie/dashborad_pie.dart';
-import 'package:dashbord/dialog/edit_expense.dart';
+
 import 'package:dashbord/chart/dashbord_barchart.dart';
-import 'package:dashbord/states/manage_order.dart';
+
 import 'package:dashbord/states/setting_acc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -390,86 +390,6 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                 ),
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DashboardPie()));
-                                },
-                                child: Text(
-                                  '2023',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DashboardPie()));
-                                },
-                                child: Text(
-                                  '2024',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DashboardPie()));
-                                },
-                                child: Text(
-                                  '2025',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DashboardPie()));
-                                },
-                                child: Text(
-                                  '2026',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DashboardPie()));
-                                },
-                                child: Text(
-                                  '2027',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                           SizedBox(height: 100),
@@ -594,42 +514,12 @@ class _DashboardState extends State<Dashboard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Waiting Payment',
+                            'Order Details',
                             style: GoogleFonts.fredokaOne(
                               fontSize: 50,
                             ),
                           ),
                           Divider(thickness: 2),
-                          Container(
-                            margin: EdgeInsets.only(right: 50),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Icon(Icons.search),
-                                  margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
-                                ),
-                                Expanded(
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Order Number',
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Recent Today',
-                            style: GoogleFonts.fredokaOne(
-                              fontSize: 20,
-                            ),
-                          ),
                         ],
                       ),
                     ],

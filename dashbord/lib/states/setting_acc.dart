@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dashbord/model/typetechnic_rray.dart';
 import 'package:dashbord/model/user_model.dart';
 import 'package:dashbord/states/dashbord.dart';
-import 'package:dashbord/states/manage_order.dart';
+
 import 'package:dashbord/utility/show_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,8 +56,8 @@ class _SettingAccountState extends State<SettingAccount> {
       for (var item in value.docs) {
         UserModel userModel = UserModel.fromMap(item.data());
 
-            TypeTechnicArrayModel typeTechnicArrayModel =
-        TypeTechnicArrayModel.fromMap(item.data());
+        TypeTechnicArrayModel typeTechnicArrayModel =
+            TypeTechnicArrayModel.fromMap(item.data());
         String docId = item.id;
         switch (userModel.province) {
           case 'เชียงใหม่':
@@ -65,8 +65,7 @@ class _SettingAccountState extends State<SettingAccount> {
               chiangMaiModels.add(userModel);
               acceptChiangMais.add(userModel.accept);
               docIdChiangMais.add(docId);
-               typeTechnicArrayModels.add(typeTechnicArrayModel);
-              
+              typeTechnicArrayModels.add(typeTechnicArrayModel);
             });
 
             break;
@@ -98,16 +97,37 @@ class _SettingAccountState extends State<SettingAccount> {
         child: Row(
           children: [
             buildMenu(context),
-            buildChiangMai(),
-            buildBangkok(),
-            buildChonburi(),
+            buildSettingAccount(),
+            buildPersonalDat(),
           ],
         ),
       ),
     );
   }
 
-  Expanded buildChonburi() {
+  Expanded buildPersonalDat() {
+    return Expanded(
+        flex: 12,
+        child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: Colors.white,
+            child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Personal Dat',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ]))));
+  }
+
+  Expanded buildSettingAccount() {
     return Expanded(
       flex: 5,
       child: Container(
@@ -120,160 +140,10 @@ class _SettingAccountState extends State<SettingAccount> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Chonburi',
+                'Setting Account',
                 style: GoogleFonts.fredokaOne(
                   fontSize: 30,
-                  color: Colors.pink,
-                ),
-              ),
-              SizedBox(height: 5),
-              Container(
-                margin: EdgeInsets.only(right: 100),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      child: Icon(Icons.search),
-                      margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
-                    ),
-                    const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Search..',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              chonBuriModels.isEmpty
-                  ? const ShowProgress()
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      physics: const ScrollPhysics(),
-                      itemCount: chonBuriModels.length,
-                      itemBuilder: (context, index) => Column(
-                        children: [
-                          CheckboxListTile(
-                            value: acceptChonburis[index],
-                            onChanged: (value) {
-                              confirmCheck(chonBuriModels[index], value,
-                                  docIdChonburis[index]);
-                              // setState(() {
-                              // acceptChiangMais[index] = value!;
-                              // });
-                            },
-                            title: Text(chonBuriModels[index].name),
-                            //  subtitle: Text(
-                            //  'Scope : ${chonBuriModels[index].jobScope}'),
-                          ),
-                          const Divider(thickness: 2)
-                        ],
-                      ),
-                    ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Expanded buildBangkok() {
-    return Expanded(
-      flex: 5,
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.white,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Bangkok',
-                style: GoogleFonts.fredokaOne(
-                  fontSize: 30,
-                  color: Colors.purple,
-                ),
-              ),
-              SizedBox(height: 5),
-              Container(
-                margin: EdgeInsets.only(right: 100),
-                decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      child: Icon(Icons.search),
-                      margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
-                    ),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Search..',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              bangKokModels.isEmpty
-                  ? const ShowProgress()
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      physics: const ScrollPhysics(),
-                      itemCount: bangKokModels.length,
-                      itemBuilder: (context, index) => Column(
-                        children: [
-                          CheckboxListTile(
-                            value: acceptBangKoks[index],
-                            onChanged: (value) {
-                              confirmCheck(bangKokModels[index], value,
-                                  docIdBangKoks[index]);
-                              // setState(() {
-                              // acceptChiangMais[index] = value!;
-                              // });
-                            },
-                            title: Text(bangKokModels[index].name),
-                            //  subtitle: Text(
-                            //  'Scope : ${bangKokModels[index].jobScope}'),
-                          ),
-                          const Divider(thickness: 2)
-                        ],
-                      ),
-                    ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Expanded buildChiangMai() {
-    return Expanded(
-      flex: 5,
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.black12,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Chiang Mai',
-                style: GoogleFonts.fredokaOne(
-                  fontSize: 30,
-                  color: Colors.orange,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 5),
@@ -370,18 +240,18 @@ class _SettingAccountState extends State<SettingAccount> {
               ),
               // SizedBox(height: 20),
               // TextButton(
-                // onPressed: () {
-                  // Navigator.push(context,
-                      // MaterialPageRoute(builder: (context) => ManageOrder()));
-                // },
-                // child: Text(
-                  // 'Manage Order',
-                  // style: GoogleFonts.lato(
-                    // fontSize: 15,
-                    // color: Colors.black,
-                    // fontWeight: FontWeight.bold,
-                  // ),
-                // ),
+              // onPressed: () {
+              // Navigator.push(context,
+              // MaterialPageRoute(builder: (context) => ManageOrder()));
+              // },
+              // child: Text(
+              // 'Manage Order',
+              // style: GoogleFonts.lato(
+              // fontSize: 15,
+              // color: Colors.black,
+              // fontWeight: FontWeight.bold,
+              // ),
+              // ),
               // ),
               SizedBox(height: 20),
               TextButton(
