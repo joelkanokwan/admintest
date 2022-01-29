@@ -107,24 +107,42 @@ class _SettingAccountState extends State<SettingAccount> {
 
   Expanded buildPersonalDat() {
     return Expanded(
-        flex: 12,
-        child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            color: Colors.white,
-            child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+      flex: 12,
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.white,
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Personal Dat',
+                style: GoogleFonts.fredokaOne(
+                  fontSize: 30,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 40),
+              Container(
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Personal Dat',
-                        style: GoogleFonts.fredokaOne(
-                          fontSize: 30,
-                          color: Colors.black,
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 60,
                         ),
-                      ),
-                    ]))));
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Expanded buildSettingAccount() {

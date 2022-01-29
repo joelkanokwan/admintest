@@ -330,24 +330,24 @@ class _DashboardState extends State<Dashboard> {
                             height: 200,
                             child: DashBoardBarChart(),
                           ),
-                          SizedBox(height: 30),
-                          Row(
-                            children: [
-                              Container(
-                                child: PieChart(
-                                  dataMap: dashboardpie,
-                                  chartRadius:
-                                      MediaQuery.of(context).size.width / 6.4,
-                                  legendOptions: LegendOptions(
-                                    legendPosition: LegendPosition.right,
-                                  ),
-                                  chartValuesOptions: ChartValuesOptions(
-                                    showChartValues: true,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // SizedBox(height: 30),
+                          // Row(
+                            // children: [
+                              // Container(
+                                // child: PieChart(
+                                  // dataMap: dashboardpie,
+                                  // chartRadius:
+                                      // MediaQuery.of(context).size.width / 6.4,
+                                  // legendOptions: LegendOptions(
+                                    // legendPosition: LegendPosition.right,
+                                  // ),
+                                  // chartValuesOptions: ChartValuesOptions(
+                                    // showChartValues: true,
+                                  // ),
+                                // ),
+                              // ),
+                            // ],
+                          // ),
                           SizedBox(height: 20),
                           Text(
                             'History',

@@ -17,11 +17,11 @@ class _DashboardPieState extends State<DashboardPie> {
     'Total Revenue': 100000,
     'Net Profit': 50000,
   };
-  Map<String, double> revenuepie = {
-    'ChiangMai': 100000,
-    'Bangkok': 200000,
-    'Chonburi': 105000,
-  };
+  // Map<String, double> revenuepie = {
+    // 'ChiangMai': 100000,
+    // 'Bangkok': 200000,
+    // 'Chonburi': 105000,
+  // };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,19 +141,19 @@ class _DashboardPieState extends State<DashboardPie> {
                               ),
                             ),
                           ),
-                          Container(
-                            child: PieChart(
-                              dataMap: revenuepie,
-                              chartRadius:
-                                  MediaQuery.of(context).size.width / 4.4,
-                              legendOptions: LegendOptions(
-                                legendPosition: LegendPosition.bottom,
-                              ),
-                              chartValuesOptions: ChartValuesOptions(
-                                showChartValuesInPercentage: true,
-                              ),
-                            ),
-                          ),
+                          // Container(
+                            // child: PieChart(
+                              // dataMap: revenuepie,
+                              // chartRadius:
+                                  // MediaQuery.of(context).size.width / 4.4,
+                              // legendOptions: LegendOptions(
+                                // legendPosition: LegendPosition.bottom,
+                              // ),
+                              // chartValuesOptions: ChartValuesOptions(
+                                // showChartValuesInPercentage: true,
+                              // ),
+                            // ),
+                          // ),
                         ],
                       ),
                     ],
