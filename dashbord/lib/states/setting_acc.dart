@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dashbord/model/typetechnic_rray.dart';
 import 'package:dashbord/model/user_model.dart';
 import 'package:dashbord/states/dashbord.dart';
+import 'package:dashbord/states/payroll.dart';
 
 import 'package:dashbord/utility/show_progress.dart';
 import 'package:flutter/material.dart';
@@ -118,20 +119,112 @@ class _SettingAccountState extends State<SettingAccount> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Personal Dat',
+                'Personal Data',
                 style: GoogleFonts.fredokaOne(
                   fontSize: 30,
                   color: Colors.black,
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 90),
               Container(
                 child: Column(
                   children: [
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 60,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 80),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Shop Name :',
+                                style: GoogleFonts.comicNeue(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Id card/Tax Id :',
+                                    style: GoogleFonts.comicNeue(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(width: 220),
+                                  Text(
+                                    'Phone Number :',
+                                    style: GoogleFonts.comicNeue(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 12),
+                              Text(
+                                'EmailAddress :',
+                                style: GoogleFonts.comicNeue(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                              Text(
+                                'Address :',
+                                style: GoogleFonts.comicNeue(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                              Text(
+                                'JobType :',
+                                style: GoogleFonts.comicNeue(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                              Text(
+                                'JobScope :',
+                                style: GoogleFonts.comicNeue(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Name of bank :',
+                                    style: GoogleFonts.comicNeue(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(width: 220),
+                                  Text(
+                                    'Account Number :',
+                                    style: GoogleFonts.comicNeue(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 12),
+                              Text(
+                                'Account Name :',
+                                style: GoogleFonts.comicNeue(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -285,6 +378,21 @@ class _SettingAccountState extends State<SettingAccount> {
               ),
               SizedBox(height: 20),
               TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PayRoll()));
+                },
+                child: Text(
+                  'Payroll',
+                  style: GoogleFonts.lato(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextButton(
                 onPressed: () {},
                 child: Text(
                   'SignOut',
@@ -335,7 +443,7 @@ class _SettingAccountState extends State<SettingAccount> {
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: const Text('Profile'),
           ),
         ],
       ),

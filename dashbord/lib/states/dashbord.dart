@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:dashbord/pie/dashborad_pie.dart';
 
 import 'package:dashbord/chart/dashbord_barchart.dart';
+import 'package:dashbord/states/payroll.dart';
 
 import 'package:dashbord/states/setting_acc.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,50 +27,14 @@ class _DashboardState extends State<Dashboard> {
     'Bangkok': 3000,
   };
 
-  late Map<DateTime, List<Event>> selectedEvents;
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
-  // TextEditingController _eventController = TextEditingController();
 
   @override
   void initState() {
-    selectedEvents = {};
     super.initState();
   }
-
-  List<Event> _getEventsfromDay(DateTime date) {
-    return selectedEvents[date] ?? [];
-  }
-
-  // @override
-  // void dispose() {
-  // _eventController.dispose();
-  // super.dispose();
-  // }
-
-  // DateTime? date;
-
-  // String getDate() {
-  // if (date == null) {
-  // return 'Appointment Date';
-  // } else {
-  // return '${date!.day}/${date!.month}/${date!.year}';
-  // }
-  // }
-
-  // Future pickDate(BuildContext context) async {
-  // final initialDate = DateTime.now();
-  // final newDate = await showDatePicker(
-  // context: context,
-  // initialDate: initialDate,
-  // firstDate: DateTime.now(),
-  // lastDate: DateTime(2022),
-  // );
-  // if (newDate == null) return;
-
-  // setState(() => date = newDate);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -112,23 +77,6 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                       ),
-                      // SizedBox(height: 20),
-                      // TextButton(
-                      // onPressed: () {
-                      // Navigator.push(
-                      // context,
-                      // MaterialPageRoute(
-                      // builder: (context) => ManageOrder()));
-                      // },
-                      // child: Text(
-                      // 'Manage Order',
-                      // style: GoogleFonts.lato(
-                      // fontSize: 15,
-                      // color: Colors.black,
-                      // fontWeight: FontWeight.bold,
-                      // ),
-                      // ),
-                      // ),
                       SizedBox(height: 20),
                       TextButton(
                         onPressed: () {
@@ -139,6 +87,23 @@ class _DashboardState extends State<Dashboard> {
                         },
                         child: Text(
                           'Setting Account',
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PayRoll()));
+                        },
+                        child: Text(
+                          'Payroll',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
@@ -332,21 +297,21 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           // SizedBox(height: 30),
                           // Row(
-                            // children: [
-                              // Container(
-                                // child: PieChart(
-                                  // dataMap: dashboardpie,
-                                  // chartRadius:
-                                      // MediaQuery.of(context).size.width / 6.4,
-                                  // legendOptions: LegendOptions(
-                                    // legendPosition: LegendPosition.right,
-                                  // ),
-                                  // chartValuesOptions: ChartValuesOptions(
-                                    // showChartValues: true,
-                                  // ),
-                                // ),
-                              // ),
-                            // ],
+                          // children: [
+                          // Container(
+                          // child: PieChart(
+                          // dataMap: dashboardpie,
+                          // chartRadius:
+                          // MediaQuery.of(context).size.width / 6.4,
+                          // legendOptions: LegendOptions(
+                          // legendPosition: LegendPosition.right,
+                          // ),
+                          // chartValuesOptions: ChartValuesOptions(
+                          // showChartValues: true,
+                          // ),
+                          // ),
+                          // ),
+                          // ],
                           // ),
                           SizedBox(height: 20),
                           Text(
@@ -415,7 +380,7 @@ class _DashboardState extends State<Dashboard> {
                                   child: TextField(
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: 'Order Number',
+                                      hintText: 'Search here',
                                     ),
                                   ),
                                 ),
@@ -423,73 +388,11 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           SizedBox(height: 20),
-                          GridView.count(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            crossAxisCount: 1,
+                          Column(
                             children: [
-                              TableCalendar(
-                                focusedDay: selectedDay,
-                                firstDay: DateTime(1990),
-                                lastDay: DateTime(2050),
-                                calendarFormat: format,
-                                onFormatChanged: (CalendarFormat _format) {
-                                  setState(() {
-                                    format = _format;
-                                  });
-                                },
-                                startingDayOfWeek: StartingDayOfWeek.sunday,
-                                daysOfWeekVisible: true,
-                                //Day Changed
-                                onDaySelected:
-                                    (DateTime selectDay, DateTime focusDay) {
-                                  setState(() {
-                                    selectedDay = selectDay;
-                                    focusedDay = focusDay;
-                                  });
-                                  print(focusedDay);
-                                },
-                                selectedDayPredicate: (DateTime date) {
-                                  return isSameDay(selectedDay, date);
-                                },
-                                eventLoader: _getEventsfromDay,
-                                //To style the Calendar
-                                calendarStyle: CalendarStyle(
-                                  isTodayHighlighted: true,
-                                  selectedDecoration: BoxDecoration(
-                                    color: Colors.blue,
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  selectedTextStyle:
-                                      TextStyle(color: Colors.white),
-                                  todayDecoration: BoxDecoration(
-                                    color: Colors.purpleAccent,
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  defaultDecoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  weekendDecoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                ),
-                                headerStyle: HeaderStyle(
-                                  formatButtonVisible: true,
-                                  titleCentered: true,
-                                  formatButtonShowsNext: false,
-                                  formatButtonDecoration: BoxDecoration(
-                                    color: Colors.blue,
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  formatButtonTextStyle: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
+                              buildCalendar(),
+                              SizedBox(height: 30),
+                              buildtransaction(),
                             ],
                           ),
                         ],
@@ -520,6 +423,105 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           Divider(thickness: 2),
+                          SizedBox(height: 20),
+                          Text(
+                            'Shop name :',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Customer name : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Email address : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'เลขประจำตัวผู้เสียภาษี : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'หมายเลขโทรศัพท์: ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Order number : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Appointment Date : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(thickness: 3),
+                          SizedBox(height: 8),
+                          Text(
+                            'Address : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(thickness: 3),
+                          SizedBox(height: 8),
+                          Text(
+                            'Detail of work : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(thickness: 3),
+                          Text(
+                            'Wanranty :  ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(thickness: 3),
+                          Text(
+                            'Total Price : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(thickness: 3),
+                          Text(
+                            'Payment method : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(thickness: 3),
                         ],
                       ),
                     ],
@@ -531,5 +533,111 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
     );
+  }
+
+  TableCalendar<dynamic> buildCalendar() {
+    return TableCalendar(
+      focusedDay: selectedDay,
+      firstDay: DateTime(2022),
+      lastDay: DateTime(2032),
+      onFormatChanged: (CalendarFormat _format) {
+        setState(() {
+          format = _format;
+        });
+      },
+      calendarFormat: format,
+      startingDayOfWeek: StartingDayOfWeek.monday,
+      daysOfWeekVisible: true,
+      onDaySelected: (DateTime selectDay, DateTime focusDay) {
+        setState(() {
+          selectedDay = selectDay;
+          focusedDay = focusDay;
+        });
+        print(focusedDay);
+      },
+      selectedDayPredicate: (DateTime date) {
+        return isSameDay(selectedDay, date);
+      },
+      headerStyle: HeaderStyle(
+        leftChevronIcon: const Icon(
+          Icons.chevron_left,
+          size: 24,
+          color: Colors.black54,
+        ),
+        rightChevronIcon: const Icon(
+          Icons.chevron_right,
+          size: 24,
+          color: Colors.black54,
+        ),
+        formatButtonVisible: true,
+        formatButtonShowsNext: false,
+        formatButtonDecoration: BoxDecoration(
+          color: Colors.lightBlueAccent,
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        formatButtonTextStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
+        titleTextStyle: const TextStyle(
+          color: Color.fromARGB(255, 87, 80, 80),
+          fontSize: 19,
+          fontWeight: FontWeight.bold,
+        ),
+        // titleCentered: true,
+      ),
+      calendarStyle: CalendarStyle(
+        isTodayHighlighted: true,
+        selectedDecoration: BoxDecoration(
+          color: Colors.blue,
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        selectedTextStyle: TextStyle(color: Colors.white),
+        todayDecoration: BoxDecoration(
+          color: Colors.purpleAccent,
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        defaultDecoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+      ),
+    );
+  }
+
+  Container buildtransaction() {
+    return Container(
+        height: 50,
+        child: GridView.count(
+          shrinkWrap: true,
+          physics: ScrollPhysics(),
+          crossAxisCount: 5,
+          children: [
+            Card(
+              color: Colors.redAccent,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Text('Order number : xxxxxxx'),
+              ),
+            ),
+          ],
+
+          // child: ListView(
+          // shrinkWrap: true,
+          // physics: NeverScrollableScrollPhysics(),
+          // children: [
+          // Card(
+          // color: Colors.redAccent,
+          // child: Padding(
+          // padding: const EdgeInsets.all(23),
+          // child: Text('Order number : xxxxxxx'),
+          // ),
+          // ),
+          // ],
+          // ),
+        ));
   }
 }
