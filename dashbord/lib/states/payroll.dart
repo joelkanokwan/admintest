@@ -1,13 +1,17 @@
+import 'dart:typed_data';
+
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/my_dialog.dart';
+import 'package:dashbord/states/payslip.dart';
+import 'package:dashbord/states/receipt_invoice.dart';
 import 'package:dashbord/states/setting_acc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
-
-
-
-
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
 
 class PayRoll extends StatefulWidget {
   const PayRoll({Key? key}) : super(key: key);
@@ -239,6 +243,28 @@ class _PayRollState extends State<PayRoll> {
                                     'หลังจากส่งเรียนบร้อยแล้วระบบจะทำการย้ายข้อมูลดังกล่าวไปยัง Payment History');
                               },
                               child: Text('Sent Pay Slip'),
+                            ),
+                            SizedBox(width: 18),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PaySip(),
+                                    ));
+                              },
+                              child: Text('Show Paysip PDF'),
+                            ),
+                            SizedBox(width: 18),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ReceiptAndInvoice(),
+                                    ));
+                              },
+                              child: Text('Show ReceiptAndInvoice PDF'),
                             ),
                           ],
                         ),
