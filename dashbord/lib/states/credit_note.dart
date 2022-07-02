@@ -5,16 +5,15 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:typed_data';
 
-class ReceiptAndInvoice extends StatefulWidget {
-  const ReceiptAndInvoice({Key? key}) : super(key: key);
+class CreditNote extends StatefulWidget {
+  const CreditNote({Key? key}) : super(key: key);
 
   @override
-  State<ReceiptAndInvoice> createState() => _ReceiptAndInvoiceState();
+  State<CreditNote> createState() => _CreditNoteState();
 }
 
-class _ReceiptAndInvoiceState extends State<ReceiptAndInvoice> {
-
-  Future<Uint8List> showReceiptAndInvoiceIDF() async {
+class _CreditNoteState extends State<CreditNote> {
+  Future<Uint8List> showCreditNotePDF() async {
     var pdf = pw.Document();
 
     final tableHeaders = [
@@ -31,35 +30,39 @@ class _ReceiptAndInvoiceState extends State<ReceiptAndInvoice> {
         '20000',
       ],
     ];
-
-    final subtotal = [
+    final oldInvoice = [
       [
-        '',
-        '',
-        'Subtotal',
-        '18691.58',
+        'Total value according to the original tax invoice',
+        '20000',
       ],
     ];
-
-    final salesTax = [
+    final correctValue = [
       [
-        '',
-        '',
+        'Correct value',
+        '20000',
+      ],
+    ];
+    final different = [
+      [
+        'Different',
+        '0',
+      ],
+    ];
+    final vat = [
+      [
         'Vat 7%',
-        '1308.42',
+        '0',
       ],
     ];
     final toTal = [
       [
-        '',
-        '',
         'Total',
         '20000',
       ],
     ];
-
     final imageLogo = pw.MemoryImage(
         (await rootBundle.load('assets/images/logo.png')).buffer.asUint8List());
+
     pdf.addPage(
       pw.Page(
         pageFormat: PdfPageFormat.a3,
@@ -70,7 +73,7 @@ class _ReceiptAndInvoiceState extends State<ReceiptAndInvoice> {
               children: [
                 pw.Image(imageLogo),
                 pw.Text(
-                  'Receipt / Invoice',
+                  'Credit Note / Invoice',
                   style: pw.TextStyle(
                     fontWeight: pw.FontWeight.bold,
                     fontSize: 40,
@@ -91,28 +94,9 @@ class _ReceiptAndInvoiceState extends State<ReceiptAndInvoice> {
                   ),
                 ),
                 pw.Text(
-                  'No : 1234567890',
+                  'Date : 2 July 2022',
                   style: pw.TextStyle(
                     fontSize: 28,
-                  ),
-                ),
-              ],
-            ),
-            pw.SizedBox(height: 10),
-            pw.Row(
-              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-              children: [
-                pw.Text(
-                  'Tax ID :  1234567898745',
-                  style: pw.TextStyle(
-                    fontSize: 28,
-                  ),
-                ),
-                pw.SizedBox(height: 10),
-                pw.Text(
-                  'Date : 28 June 2022',
-                  style: pw.TextStyle(
-                    fontSize: 25,
                   ),
                 ),
               ],
@@ -123,6 +107,13 @@ class _ReceiptAndInvoiceState extends State<ReceiptAndInvoice> {
                 pw.Column(
                   crossAxisAlignment: pw.CrossAxisAlignment.start,
                   children: [
+                    pw.Text(
+                      'Tax ID :  1234567898745',
+                      style: pw.TextStyle(
+                        fontSize: 28,
+                      ),
+                    ),
+                    pw.SizedBox(height: 10),
                     pw.Text(
                       '163/31 Myhipcondo 2',
                       style: pw.TextStyle(
@@ -222,75 +213,102 @@ class _ReceiptAndInvoiceState extends State<ReceiptAndInvoice> {
                     ),
                     pw.SizedBox(height: 10),
                     pw.Table.fromTextArray(
-                      data: subtotal,
+                      data: oldInvoice,
                       border: null,
                       columnWidths: {
-                        0: pw.FixedColumnWidth(300),
+                        0: pw.FixedColumnWidth(582),
                         1: pw.FixedColumnWidth(141),
-                        2: pw.FixedColumnWidth(141),
-                        3: pw.FixedColumnWidth(141),
                       },
                       headerStyle: pw.TextStyle(
                         fontSize: 24,
                         fontWeight: pw.FontWeight.bold,
                       ),
-                      cellHeight: 40.0,
+                      cellHeight: 30,
                       cellAlignments: {
-                        2: pw.Alignment.bottomRight,
-                        3: pw.Alignment.bottomRight,
+                        0: pw.Alignment.bottomRight,
+                        1: pw.Alignment.bottomRight,
                       },
                     ),
                     pw.Table.fromTextArray(
-                      data: salesTax,
+                      data: correctValue,
                       border: null,
                       columnWidths: {
-                        0: pw.FixedColumnWidth(300),
+                        0: pw.FixedColumnWidth(582),
                         1: pw.FixedColumnWidth(141),
-                        2: pw.FixedColumnWidth(141),
-                        3: pw.FixedColumnWidth(141),
                       },
                       headerStyle: pw.TextStyle(
                         fontSize: 24,
                         fontWeight: pw.FontWeight.bold,
                       ),
-                      cellHeight: 40.0,
+                      cellHeight: 30,
                       cellAlignments: {
-                        2: pw.Alignment.bottomRight,
-                        3: pw.Alignment.bottomRight,
+                        0: pw.Alignment.bottomRight,
+                        1: pw.Alignment.bottomRight,
+                      },
+                    ),
+                    pw.Table.fromTextArray(
+                      data: different,
+                      border: null,
+                      columnWidths: {
+                        0: pw.FixedColumnWidth(582),
+                        1: pw.FixedColumnWidth(141),
+                      },
+                      headerStyle: pw.TextStyle(
+                        fontSize: 24,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                      cellHeight: 30,
+                      cellAlignments: {
+                        0: pw.Alignment.bottomRight,
+                        1: pw.Alignment.bottomRight,
+                      },
+                    ),
+                    pw.Table.fromTextArray(
+                      data: vat,
+                      border: null,
+                      columnWidths: {
+                        0: pw.FixedColumnWidth(582),
+                        1: pw.FixedColumnWidth(141),
+                      },
+                      headerStyle: pw.TextStyle(
+                        fontSize: 24,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                      cellHeight: 30,
+                      cellAlignments: {
+                        0: pw.Alignment.bottomRight,
+                        1: pw.Alignment.bottomRight,
                       },
                     ),
                     pw.Table.fromTextArray(
                       data: toTal,
                       border: null,
                       columnWidths: {
-                        0: pw.FixedColumnWidth(300),
+                        0: pw.FixedColumnWidth(582),
                         1: pw.FixedColumnWidth(141),
-                        2: pw.FixedColumnWidth(141),
-                        3: pw.FixedColumnWidth(141),
                       },
                       headerStyle: pw.TextStyle(
                         fontSize: 24,
                         fontWeight: pw.FontWeight.bold,
                       ),
-                      cellHeight: 40.0,
+                      cellHeight: 30,
                       cellAlignments: {
-                        2: pw.Alignment.bottomRight,
-                        3: pw.Alignment.bottomRight,
+                        0: pw.Alignment.bottomRight,
+                        1: pw.Alignment.bottomRight,
                       },
                     ),
                   ],
                 ),
               ],
             ),
-            pw.SizedBox(height: 70),
+            pw.SizedBox(height: 60),
             pw.Row(
               mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
               children: [
                 pw.Text(
-                  'THANK YOU!',
+                  'Ref No : 123456789',
                   style: pw.TextStyle(
-                    fontSize: 35,
-                    fontWeight: pw.FontWeight.bold,
+                    fontSize: 25,
                   ),
                 ),
                 pw.Text(
@@ -305,14 +323,13 @@ class _ReceiptAndInvoiceState extends State<ReceiptAndInvoice> {
               mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
               children: [
                 pw.Text(
-                  'PLEASURE DOING BUSINESS WITH YOU',
+                  'Remark : breach of service contact',
                   style: pw.TextStyle(
-                    fontSize: 20,
-                    fontWeight: pw.FontWeight.bold,
+                    fontSize: 25,
                   ),
                 ),
                 pw.Text(
-                  'General Manager',
+                  'Genernal Manager',
                   style: pw.TextStyle(
                     fontSize: 25,
                   ),
@@ -323,16 +340,16 @@ class _ReceiptAndInvoiceState extends State<ReceiptAndInvoice> {
         ),
       ),
     );
-
     return pdf.save();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: PdfPreview(build: (format) => showReceiptAndInvoiceIDF(),)),
+      body: SafeArea(
+          child: PdfPreview(
+        build: (format) => showCreditNotePDF(),
+      )),
     );
   }
 }

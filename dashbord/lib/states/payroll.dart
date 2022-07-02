@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:dashbord/states/credit_note.dart';
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/my_dialog.dart';
 import 'package:dashbord/states/payslip.dart';
@@ -265,6 +266,17 @@ class _PayRollState extends State<PayRoll> {
                                     ));
                               },
                               child: Text('Show ReceiptAndInvoice PDF'),
+                            ),
+                            SizedBox(width: 18),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CreditNote(),
+                                    ));
+                              },
+                              child: Text('Show Credit Note'),
                             ),
                           ],
                         ),
