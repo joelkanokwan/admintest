@@ -1,6 +1,7 @@
 import 'package:dashbord/states/dashbord.dart';
+import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/payroll.dart';
-import 'package:dashbord/states/setting_acc.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PayRoll(),
+      home: Employee(),
     );
   }
 }

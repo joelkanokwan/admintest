@@ -189,7 +189,7 @@ packages:
       name: fl_chart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.40.0"
+    version: "0.40.6"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -372,7 +372,7 @@ packages:
       name: pie_chart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.1"
+    version: "5.3.2"
   platform:
     dependency: transitive
     description:

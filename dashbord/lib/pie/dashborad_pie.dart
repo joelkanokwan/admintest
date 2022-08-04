@@ -1,6 +1,5 @@
 import 'package:dashbord/states/dashbord.dart';
-
-import 'package:dashbord/states/setting_acc.dart';
+import 'package:dashbord/states/partner.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -74,10 +73,10 @@ class _DashboardPieState extends State<DashboardPie> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SettingAccount()));
+                                  builder: (context) => Partner()));
                         },
                         child: Text(
-                          'Setting Account',
+                          'Partner',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,

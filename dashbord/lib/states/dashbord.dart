@@ -3,9 +3,10 @@ import 'dart:html';
 import 'package:dashbord/pie/dashborad_pie.dart';
 
 import 'package:dashbord/chart/dashbord_barchart.dart';
+import 'package:dashbord/states/employee.dart';
+import 'package:dashbord/states/partner.dart';
 import 'package:dashbord/states/payroll.dart';
 
-import 'package:dashbord/states/setting_acc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -83,10 +84,27 @@ class _DashboardState extends State<Dashboard> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SettingAccount()));
+                                  builder: (context) => Employee()));
                         },
                         child: Text(
-                          'Setting Account',
+                          'Employee',
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Partner()));
+                        },
+                        child: Text(
+                          'Partner',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
@@ -158,19 +176,113 @@ class _DashboardState extends State<Dashboard> {
                             child: GridView.count(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              crossAxisCount: 5,
+                              crossAxisCount: 4,
                               children: [
                                 Card(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   margin: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 50),
+                                      horizontal: 10, vertical: 80),
                                   child: Center(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
+                                          'Input Tax / ภาษีซื้อ',
+                                        ),
+                                        SizedBox(height: 20),
+                                        Text(
+                                          'xxx',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 80),
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Text(
+                                          'Output Tax / ภาษีขาย',
+                                        ),
+                                        const SizedBox(height: 20),
+                                        const Text(
+                                          'xxx',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 80),
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          'ภาษีเงินได้หัก ณ ที่จ่าย',
+                                        ),
+                                        SizedBox(height: 20),
+                                        Text(
+                                          'xxx',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 80),
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          'ภาษีเงินได้ที่ถูกหัก ณ ที่จ่าย',
+                                        ),
+                                        SizedBox(height: 20),
+                                        Text(
+                                          'xxx',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          Container(
+                            child: GridView.count(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              crossAxisCount: 3,
+                              children: [
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 120),
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
                                           'Total Revenue',
                                         ),
                                         SizedBox(height: 20),
@@ -186,55 +298,13 @@ class _DashboardState extends State<Dashboard> {
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   margin: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 50),
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Text(
-                                          'Vat 7%',
-                                        ),
-                                        const SizedBox(height: 20),
-                                        const Text(
-                                          'xxx',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 50),
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Text(
-                                          'Service Tax 3%',
-                                        ),
-                                        const SizedBox(height: 20),
-                                        const Text(
-                                          'xxx',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 50),
+                                      horizontal: 10, vertical: 120),
                                   child: Center(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
-                                          'Allowance',
+                                          'Total Cost',
                                         ),
                                         SizedBox(height: 20),
                                         Text(
@@ -249,7 +319,7 @@ class _DashboardState extends State<Dashboard> {
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   margin: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 50),
+                                      horizontal: 10, vertical: 120),
                                   child: Center(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,

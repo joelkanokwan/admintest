@@ -4,20 +4,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dashbord/model/typetechnic_rray.dart';
 import 'package:dashbord/model/user_model.dart';
 import 'package:dashbord/states/dashbord.dart';
+import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/payroll.dart';
 
 import 'package:dashbord/utility/show_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SettingAccount extends StatefulWidget {
-  const SettingAccount({Key? key}) : super(key: key);
+class Partner extends StatefulWidget {
+  const Partner({Key? key}) : super(key: key);
 
   @override
-  _SettingAccountState createState() => _SettingAccountState();
+  _PartnerState createState() => _PartnerState();
 }
 
-class _SettingAccountState extends State<SettingAccount> {
+class _PartnerState extends State<Partner> {
   List<UserModel> chiangMaiModels = [];
   List<UserModel> bangKokModels = [];
   List<UserModel> chonBuriModels = [];
@@ -99,14 +100,14 @@ class _SettingAccountState extends State<SettingAccount> {
           children: [
             buildMenu(context),
             buildSettingAccount(),
-            buildPersonalDat(),
+            buildPersonalData(),
           ],
         ),
       ),
     );
   }
 
-  Expanded buildPersonalDat() {
+  Expanded buildPersonalData() {
     return Expanded(
       flex: 12,
       child: Container(
@@ -349,26 +350,26 @@ class _SettingAccountState extends State<SettingAccount> {
                   ),
                 ),
               ),
-              // SizedBox(height: 20),
-              // TextButton(
-              // onPressed: () {
-              // Navigator.push(context,
-              // MaterialPageRoute(builder: (context) => ManageOrder()));
-              // },
-              // child: Text(
-              // 'Manage Order',
-              // style: GoogleFonts.lato(
-              // fontSize: 15,
-              // color: Colors.black,
-              // fontWeight: FontWeight.bold,
-              // ),
-              // ),
-              // ),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Employee()));
+                },
+                child: Text(
+                  'Employee',
+                  style: GoogleFonts.lato(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               SizedBox(height: 20),
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  'Setting Account',
+                  'Partner',
                   style: GoogleFonts.lato(
                     fontSize: 15,
                     color: Colors.black,

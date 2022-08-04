@@ -2,10 +2,11 @@ import 'dart:typed_data';
 
 import 'package:dashbord/states/credit_note.dart';
 import 'package:dashbord/states/dashbord.dart';
+import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/my_dialog.dart';
+import 'package:dashbord/states/partner.dart';
 import 'package:dashbord/states/payslip.dart';
 import 'package:dashbord/states/receipt_invoice.dart';
-import 'package:dashbord/states/setting_acc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -151,10 +152,27 @@ class _PayRollState extends State<PayRoll> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SettingAccount()));
+                                  builder: (context) => Employee()));
                         },
                         child: Text(
-                          'Setting Account',
+                          'Employee',
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Partner()));
+                        },
+                        child: Text(
+                          'Partner',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,

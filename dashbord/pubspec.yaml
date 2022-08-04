@@ -37,7 +37,7 @@ dependencies:
   responsive_builder: ^0.4.1
   google_fonts: ^2.1.0
   fl_chart: ^0.40.0
-  pie_chart: ^5.0.1
+  pie_chart: ^5.3.2
   firebase_core: ^1.7.0
   firebase_auth: ^3.1.2
   firebase_storage: ^10.0.4
