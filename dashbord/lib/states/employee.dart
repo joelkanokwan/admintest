@@ -1,7 +1,6 @@
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/partner.dart';
 import 'package:dashbord/states/payroll.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -186,6 +185,22 @@ Expanded buildPersonalData() {
                             ),
                             SizedBox(height: 12),
                             Text(
+                              'โบนัส (บาท) :',
+                              style: GoogleFonts.comicNeue(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
+                              'เงินปันผล (บาท) :',
+                              style: GoogleFonts.comicNeue(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
                               'คำนวณภาษีเงินได้ตามอัตราก้าวหน้าที่ต้องเสีย (ต่อปี) :',
                               style: GoogleFonts.comicNeue(
                                 fontSize: 22,
@@ -200,7 +215,6 @@ Expanded buildPersonalData() {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            
                           ],
                         ),
                       ),
@@ -209,12 +223,186 @@ Expanded buildPersonalData() {
                 ],
               ),
             ),
+            Container(
+              child: GridView.count(
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                crossAxisCount: 3,
+                children: [
+                  Card(
+                    color: Colors.black12,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    margin: EdgeInsets.all(20),
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'ประมาณรายได้ทั้งปี',
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            'xxx',
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            '(xxxx * xxxx) + xxxx',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    color: Colors.black12,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    margin: EdgeInsets.all(20),
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'ค่าใช้จ่าย',
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            'xxx',
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            '50% ของรายได้',
+                          ),
+                          Text(
+                            'แต่ไม่เกิน 100000 บาท',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    color: Colors.black12,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    margin: EdgeInsets.all(20),
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 90),
+                                child: Text(
+                                  'ค่าลดหย่อน',
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.add_sharp,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            'xxx',
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            'ค่าลดหย่อนส่วนตัว : xxx',
+                          ),
+                          Text(
+                            'ประกันสังคม : xxx',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Table(
+              border: TableBorder.all(),
+              children: [
+                buildRow([
+                  'ช่วงรายได้',
+                  'อัตราภาษี',
+                  'เงินได้สุทธิ',
+                  'จำนวนภาษีที่ต้องจ่าย'
+                ], isHeader: true),
+                buildRow([
+                  '0 - 150000',
+                  'ได้รับการยกเว้น',
+                  '',
+                  '',
+                ]),
+                buildRow([
+                  '150001 - 300000',
+                  '5%',
+                  '',
+                  '',
+                ]),
+                buildRow([
+                  '300001 - 500000',
+                  '10%',
+                  '',
+                  '',
+                ]),
+                buildRow([
+                  '500001 - 750000',
+                  '15%',
+                  '',
+                  '',
+                ]),
+                buildRow([
+                  '750001 - 1000000',
+                  '20%',
+                  '',
+                  '',
+                ]),
+                buildRow([
+                  '10000001 - 2000000',
+                  '25%',
+                  '',
+                  '',
+                ]),
+                buildRow([
+                  '2000001 - 5000000',
+                  '30%',
+                  '',
+                  '',
+                ]),
+                buildRow([
+                  '5000001 เป็นต้นไป',
+                  '35%',
+                  '',
+                  '',
+                ]),
+              ],
+            ),
           ],
         ),
       ),
     ),
   );
 }
+
+TableRow buildRow(List<String> cells, {bool isHeader = false}) => TableRow(
+      children: cells.map((cell) {
+        final style = TextStyle(
+          fontWeight: isHeader ? FontWeight.bold : FontWeight.normal,
+        );
+        return Padding(
+          padding: const EdgeInsets.all(12),
+          child: Center(child: Text(cell, style: style)),
+        );
+      }).toList(),
+    );
 
 Expanded buildSettingAccount() {
   return Expanded(
