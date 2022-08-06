@@ -10,18 +10,17 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
-class PaySip extends StatefulWidget {
-  const PaySip({Key? key}) : super(key: key);
+class PartnerPaySlip extends StatefulWidget {
+  const PartnerPaySlip({Key? key}) : super(key: key);
 
   @override
-  State<PaySip> createState() => _PaySipState();
+  State<PartnerPaySlip> createState() => _PartnerPaySlipState();
 }
 
-class _PaySipState extends State<PaySip> {
+class _PartnerPaySlipState extends State<PartnerPaySlip> {
   Future<Uint8List> showPaySlipPDF() async {
     var pdf = pw.Document();
-    
-    
+
     final tableHeaders = [
       'Earnings',
       'Amount',

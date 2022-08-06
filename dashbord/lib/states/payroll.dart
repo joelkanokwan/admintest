@@ -3,9 +3,10 @@ import 'dart:typed_data';
 import 'package:dashbord/states/credit_note.dart';
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/employee.dart';
+import 'package:dashbord/states/employee_payslip.dart';
 import 'package:dashbord/states/my_dialog.dart';
 import 'package:dashbord/states/partner.dart';
-import 'package:dashbord/states/payslip.dart';
+import 'package:dashbord/states/partner_payslip.dart';
 import 'package:dashbord/states/receipt_invoice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -246,6 +247,147 @@ class _PayRollState extends State<PayRoll> {
                         child: Row(
                           children: [
                             Text(
+                              'Employees',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                            SizedBox(width: 18),
+                            Text(
+                              'DD/MM/YY',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                            SizedBox(width: 2),
+                            Text(
+                              '(1)',
+                            ),
+                          ],
+                        ),
+                      ),
+                      DataTable(
+                        columns: [
+                          DataColumn(
+                            label: Text(
+                              'Acc Number',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Recipient Name',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Amount',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Email Address',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Tax Id',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Withholding Tax',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'File PaySlip',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                        rows: [
+                          DataRow(
+                            cells: [
+                              DataCell(
+                                Text(
+                                  '9090909090',
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  'Kanokwan Yeo',
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  '100000',
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  'eye@gmail.com',
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  '12345678912345',
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  '500',
+                                ),
+                              ),
+                              DataCell(
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              EmployeePaySlip(),
+                                        ));
+                                  },
+                                  child: Text('PDF..'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 50),
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Partners :',
+                              style: GoogleFonts.fredokaOne(
+                                fontSize: 18,
+                              ),
+                            ),
+                            SizedBox(width: 18),
+                            Text(
                               'DD/MM/YY',
                               style: GoogleFonts.fredokaOne(
                                 fontSize: 18,
@@ -269,7 +411,7 @@ class _PayRollState extends State<PayRoll> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => PaySip(),
+                                      builder: (context) => PartnerPaySlip(),
                                     ));
                               },
                               child: Text('Show Paysip PDF'),
@@ -343,7 +485,7 @@ class _PayRollState extends State<PayRoll> {
                           ),
                           DataColumn(
                             label: Text(
-                              'withhokdingTax',
+                              'withholdingTax',
                               style: GoogleFonts.fredokaOne(
                                 fontSize: 18,
                               ),
@@ -374,7 +516,7 @@ class _PayRollState extends State<PayRoll> {
                                 Text('jo@gmail.com'),
                               ),
                               DataCell(
-                                Text('1234567890'),
+                                Text('1234567890123'),
                               ),
                               DataCell(
                                 Text('247.42'),
@@ -399,7 +541,7 @@ class _PayRollState extends State<PayRoll> {
                                 Text('jo@gmail.com'),
                               ),
                               DataCell(
-                                Text('123456789'),
+                                Text('123456789123'),
                               ),
                               DataCell(
                                 Text('274.42'),
