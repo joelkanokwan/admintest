@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dashbord/model/typetechnic_rray.dart';
 import 'package:dashbord/model/user_model.dart';
+import 'package:dashbord/states/customer_service.dart';
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/payroll.dart';
@@ -343,6 +344,24 @@ class _PartnerState extends State<Partner> {
                 },
                 child: Text(
                   'Dashboard',
+                  style: GoogleFonts.lato(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CustomerService(),
+                      ));
+                },
+                child: Text(
+                  'Customer Service',
                   style: GoogleFonts.lato(
                     fontSize: 15,
                     color: Colors.black,

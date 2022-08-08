@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:dashbord/states/credit_note.dart';
+import 'package:dashbord/states/customer_service.dart';
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/employee_payslip.dart';
@@ -108,7 +109,7 @@ class _PayRollState extends State<PayRoll> {
         child: Row(
           children: [
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
@@ -140,6 +141,24 @@ class _PayRollState extends State<PayRoll> {
                         },
                         child: Text(
                           'Dashboard',
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CustomerService(),
+                              ));
+                        },
+                        child: Text(
+                          'Customer Service',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,

@@ -1,4 +1,6 @@
+import 'package:dashbord/states/customer_service.dart';
 import 'package:dashbord/states/dashbord.dart';
+import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/partner.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,9 +19,9 @@ class _DashboardPieState extends State<DashboardPie> {
     'Net Profit': 50000,
   };
   // Map<String, double> revenuepie = {
-    // 'ChiangMai': 100000,
-    // 'Bangkok': 200000,
-    // 'Chonburi': 105000,
+  // 'ChiangMai': 100000,
+  // 'Bangkok': 200000,
+  // 'Chonburi': 105000,
   // };
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,42 @@ class _DashboardPieState extends State<DashboardPie> {
                         },
                         child: Text(
                           'Dashboard',
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CustomerService(),
+                              ));
+                        },
+                        child: Text(
+                          'Customer Service',
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Employee(),
+                              ));
+                        },
+                        child: Text(
+                          'Employee',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
@@ -141,17 +179,17 @@ class _DashboardPieState extends State<DashboardPie> {
                             ),
                           ),
                           // Container(
-                            // child: PieChart(
-                              // dataMap: revenuepie,
-                              // chartRadius:
-                                  // MediaQuery.of(context).size.width / 4.4,
-                              // legendOptions: LegendOptions(
-                                // legendPosition: LegendPosition.bottom,
-                              // ),
-                              // chartValuesOptions: ChartValuesOptions(
-                                // showChartValuesInPercentage: true,
-                              // ),
-                            // ),
+                          // child: PieChart(
+                          // dataMap: revenuepie,
+                          // chartRadius:
+                          // MediaQuery.of(context).size.width / 4.4,
+                          // legendOptions: LegendOptions(
+                          // legendPosition: LegendPosition.bottom,
+                          // ),
+                          // chartValuesOptions: ChartValuesOptions(
+                          // showChartValuesInPercentage: true,
+                          // ),
+                          // ),
                           // ),
                         ],
                       ),

@@ -1,3 +1,4 @@
+import 'package:dashbord/states/customer_service.dart';
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/partner.dart';
 import 'package:dashbord/states/payroll.dart';
@@ -21,7 +22,7 @@ class _EmployeeState extends State<Employee> {
         child: Row(
           children: [
             buildMenu(context),
-            buildSettingAccount(),
+            buildEmployee(),
             buildPersonalData(),
           ],
         ),
@@ -404,7 +405,7 @@ TableRow buildRow(List<String> cells, {bool isHeader = false}) => TableRow(
       }).toList(),
     );
 
-Expanded buildSettingAccount() {
+Expanded buildEmployee() {
   return Expanded(
     flex: 5,
     child: Container(
@@ -474,6 +475,24 @@ Expanded buildMenu(BuildContext context) {
               },
               child: Text(
                 'Dashboard',
+                style: GoogleFonts.lato(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CustomerService(),
+                    ));
+              },
+              child: Text(
+                'Customer Service',
                 style: GoogleFonts.lato(
                   fontSize: 15,
                   color: Colors.black,

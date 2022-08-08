@@ -1,3 +1,4 @@
+import 'package:dashbord/states/customer_service.dart';
 import 'package:dashbord/states/dashbord.dart';
 import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/payroll.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PayRoll(),
+      home: CustomerService(),
     );
   }
 }

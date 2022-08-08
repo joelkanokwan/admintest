@@ -9,6 +9,7 @@ class DashBoardBarChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return BarChart(
       BarChartData(
+        gridData: FlGridData(show: false),
         borderData: FlBorderData(show: false),
         alignment: BarChartAlignment.spaceBetween,
         axisTitleData: FlAxisTitleData(

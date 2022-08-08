@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:dashbord/pie/dashborad_pie.dart';
 
 import 'package:dashbord/chart/dashbord_barchart.dart';
+import 'package:dashbord/states/customer_service.dart';
 import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/partner.dart';
 import 'package:dashbord/states/payroll.dart';
@@ -71,6 +72,24 @@ class _DashboardState extends State<Dashboard> {
                         onPressed: () {},
                         child: Text(
                           'Dashboard',
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CustomerService(),
+                              ));
+                        },
+                        child: Text(
+                          'Customer Service',
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
