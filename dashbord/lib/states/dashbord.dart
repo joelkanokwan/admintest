@@ -430,11 +430,11 @@ class _DashboardState extends State<Dashboard> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DashboardPie()));
+                                  // Navigator.push(
+                                  // context,
+                                  // MaterialPageRoute(
+                                  // builder: (context) =>
+                                  // DashboardPie()));
                                 },
                                 child: Text(
                                   '2022',
@@ -611,6 +611,79 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           Divider(thickness: 3),
+                          SizedBox(height: 5),
+                          Text(
+                            'ประวัติการเลื่อนการนัดหมาย : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            '(ชื่อคนขอเลื่อนนัดหมาย)ขอเลื่อนการนัดหมาย',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'วันเวลานัดหมายเดิม :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'วันเวลานัดหมายใหม่ :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'สถานะ :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Divider(thickness: 3),
+                          SizedBox(height: 5),
+                          Text(
+                            'รายละเอียดการดำเนินงาน : ',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'เข้างาน :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'เลิกงาน :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'รายละเอียดงานที่คืบหน้า / สำเร็จแล้ว :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'อัตราเปอร์เซ็นของงานที่คืบหน้า / สำเร็จแล้ว :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'รูปภาพ :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
                         ],
                       ),
                     ],
