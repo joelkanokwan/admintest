@@ -684,6 +684,12 @@ class _DashboardState extends State<Dashboard> {
                               fontSize: 15,
                             ),
                           ),
+                          Text(
+                            'สถานะ :',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
                         ],
                       ),
                     ],

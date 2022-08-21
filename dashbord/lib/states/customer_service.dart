@@ -38,7 +38,6 @@ class _CustomerServiceState extends State<CustomerService> {
             buildReportProblem(),
             // buildHistory(context),
             buildCheck(),
-            
           ],
         ),
       ),
@@ -84,97 +83,6 @@ class _CustomerServiceState extends State<CustomerService> {
                   ),
                 ],
               ),
-              SizedBox(height: 5),
-              Text(
-                'จำนวนงานที่จัดการไปแล้ว : (update realtime)',
-                style: GoogleFonts.lato(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10),
-              Divider(thickness: 2),
-              SizedBox(height: 20),
-              Text(
-                'Employees',
-                style: GoogleFonts.fredokaOne(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  Text(
-                    'Joel Yeo',
-                    style: GoogleFonts.lato(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(width: 50),
-                  Text(
-                    'ตำแหน่ง : แอดมินบริการลูกค้า',
-                    style: GoogleFonts.lato(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(width: 50),
-                  Text(
-                    'ช่วงเวลาทำงาน : XXX - XXX',
-                    style: GoogleFonts.lato(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 5),
-              Row(
-                children: [
-                  Text(
-                    'เวลาเข้างาน : (เวลาที่ล๊อคอิน)',
-                    style: GoogleFonts.lato(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(width: 50),
-                  Text(
-                    'พักเบรค : XXX -XXX', // ถ้ากำลังอยู่ระหว่างพักเบรคให้โชว์คำว่า'อยู่ในช่วงพักเบรค'
-                    style: GoogleFonts.lato(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(width: 50),
-                  Text(
-                    'เวลาเลิกงาน : XXX -XXX',
-                    style: GoogleFonts.lato(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 5),
-              Text(
-                'จำนวนงานที่จัดการไปแล้ว : (update realtime)',
-                style: GoogleFonts.lato(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 5),
-              Text(
-                'หมายเหตุ : (Time) Failure Logout / (Time) Login',
-                style: GoogleFonts.lato(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10),
               Divider(thickness: 2),
               SizedBox(height: 20),
               Text(
@@ -415,7 +323,7 @@ Expanded buildReportProblem() {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Customer report problem',
+              'Problem List',
               style: GoogleFonts.fredokaOne(
                 fontSize: 30,
                 color: Colors.black,

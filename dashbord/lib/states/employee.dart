@@ -22,7 +22,6 @@ class _EmployeeState extends State<Employee> {
         child: Row(
           children: [
             buildMenu(context),
-            buildEmployee(),
             buildPersonalData(),
           ],
         ),
@@ -33,11 +32,11 @@ class _EmployeeState extends State<Employee> {
 
 Expanded buildPersonalData() {
   return Expanded(
-    flex: 12,
+    flex: 17,
     child: Container(
       width: double.infinity,
       height: double.infinity,
-      color: Colors.white,
+      color: Colors.black12,
       child: SingleChildScrollView(
         padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Column(
@@ -386,6 +385,34 @@ Expanded buildPersonalData() {
                 ]),
               ],
             ),
+            Container(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 80),
+                              child: Text(
+                                'ประวัติการแก้ไข',
+                                style: GoogleFonts.comicNeue(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -404,44 +431,6 @@ TableRow buildRow(List<String> cells, {bool isHeader = false}) => TableRow(
         );
       }).toList(),
     );
-
-Expanded buildEmployee() {
-  return Expanded(
-    flex: 5,
-    child: Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.black12,
-      child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Employee',
-              style: GoogleFonts.fredokaOne(
-                fontSize: 30,
-                color: Colors.black,
-              ),
-            ),
-            const SizedBox(height: 5),
-            Container(
-              margin: const EdgeInsets.only(right: 100),
-              child: TextField(
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
-}
 
 Expanded buildMenu(BuildContext context) {
   return Expanded(
