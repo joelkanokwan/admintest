@@ -5,14 +5,14 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:typed_data';
 
-class CreditNote extends StatefulWidget {
-  const CreditNote({Key? key}) : super(key: key);
+class DebitNote extends StatefulWidget {
+  const DebitNote({Key? key}) : super(key: key);
 
   @override
-  State<CreditNote> createState() => _CreditNoteState();
+  State<DebitNote> createState() => _DebitNoteState();
 }
 
-class _CreditNoteState extends State<CreditNote> {
+class _DebitNoteState extends State<DebitNote> {
   Future<Uint8List> showCreditNotePDF() async {
     var pdf = pw.Document();
 
@@ -73,7 +73,7 @@ class _CreditNoteState extends State<CreditNote> {
               children: [
                 pw.Image(imageLogo),
                 pw.Text(
-                  'Credit Note',
+                  'Debit Note',
                   style: pw.TextStyle(
                     fontWeight: pw.FontWeight.bold,
                     fontSize: 40,

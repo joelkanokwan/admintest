@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:dashbord/states/credit_note.dart';
 import 'package:dashbord/states/customer_service.dart';
 import 'package:dashbord/states/dashbord.dart';
+import 'package:dashbord/states/debit_note.dart';
 import 'package:dashbord/states/employee.dart';
 import 'package:dashbord/states/employee_payslip.dart';
 import 'package:dashbord/states/my_dialog.dart';
@@ -456,6 +457,17 @@ class _PayRollState extends State<PayRoll> {
                                     ));
                               },
                               child: Text('Show Credit Note'),
+                            ),
+                            SizedBox(width: 18),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DebitNote(),
+                                    ));
+                              },
+                              child: Text('Show Debit Note'),
                             ),
                           ],
                         ),
