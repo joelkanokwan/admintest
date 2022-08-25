@@ -24,7 +24,7 @@ class _DebitNoteState extends State<DebitNote> {
     ];
     final tableData = [
       [
-        'install Airconditioner (Order number)',
+        'install Airconditioner',
         '1',
         '20000',
         '20000',
@@ -103,17 +103,28 @@ class _DebitNoteState extends State<DebitNote> {
             ),
             pw.SizedBox(height: 10),
             pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text(
+                  'Tax ID :  1234567898745',
+                  style: pw.TextStyle(
+                    fontSize: 28,
+                  ),
+                ),
+                pw.Text(
+                  'Order Number',
+                  style: pw.TextStyle(
+                    fontSize: 28,
+                  ),
+                ),
+              ],
+            ),
+            pw.SizedBox(height: 10),
+            pw.Row(
               children: [
                 pw.Column(
                   crossAxisAlignment: pw.CrossAxisAlignment.start,
                   children: [
-                    pw.Text(
-                      'Tax ID :  1234567898745',
-                      style: pw.TextStyle(
-                        fontSize: 28,
-                      ),
-                    ),
-                    pw.SizedBox(height: 10),
                     pw.Text(
                       '163/31 Myhipcondo 2',
                       style: pw.TextStyle(
@@ -329,7 +340,7 @@ class _DebitNoteState extends State<DebitNote> {
                   ),
                 ),
                 pw.Text(
-                  'Genernal Manager',
+                  'Managing Director',
                   style: pw.TextStyle(
                     fontSize: 25,
                   ),

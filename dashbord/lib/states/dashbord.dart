@@ -284,7 +284,6 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             ),
                           ),
-
                           Container(
                             child: GridView.count(
                               shrinkWrap: true,
@@ -384,96 +383,11 @@ class _DashboardState extends State<Dashboard> {
                             height: 200,
                             child: DashBoardBarChart(),
                           ),
-                          // SizedBox(height: 30),
-                          // Row(
-                          // children: [
-                          // Container(
-                          // child: PieChart(
-                          // dataMap: dashboardpie,
-                          // chartRadius:
-                          // MediaQuery.of(context).size.width / 6.4,
-                          // legendOptions: LegendOptions(
-                          // legendPosition: LegendPosition.right,
-                          // ),
-                          // chartValuesOptions: ChartValuesOptions(
-                          // showChartValues: true,
-                          // ),
-                          // ),
-                          // ),
-                          // ],
-                          // ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 30),
                           Text(
                             'History',
                             style: GoogleFonts.fredokaOne(
                               fontSize: 25,
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          Row(
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DashboardPie()));
-                                },
-                                child: Text(
-                                  '2021',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  // Navigator.push(
-                                  // context,
-                                  // MaterialPageRoute(
-                                  // builder: (context) =>
-                                  // DashboardPie()));
-                                },
-                                child: Text(
-                                  '2022',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 100),
-                          Text(
-                            'Order Created',
-                            style: GoogleFonts.fredokaOne(
-                              fontSize: 30,
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(right: 50),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Icon(Icons.search),
-                                  margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
-                                ),
-                                Expanded(
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Search here',
-                                    ),
-                                  ),
-                                ),
-                              ],
                             ),
                           ),
                           SizedBox(height: 20),
@@ -501,20 +415,35 @@ class _DashboardState extends State<Dashboard> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 30),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 250),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.search_rounded),
+                        ),
+                      ),
+
+                      // Padding(
+                      // padding: const EdgeInsets.only(left: 250),
+                      // child: IconButton(
+                      // onPressed: () {},
+                      // icon: Icon(Icons.close),
+                      // ),
+                      // ),
+
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Order Details',
+                            'Adding Expense',
                             style: GoogleFonts.fredokaOne(
-                              fontSize: 50,
+                              fontSize: 40,
                             ),
                           ),
                           Divider(thickness: 2),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           Text(
-                            'Shop name :',
+                            'Topic :',
                             style: GoogleFonts.lato(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -522,7 +451,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           SizedBox(height: 8),
                           Text(
-                            'Customer name : ',
+                            'Service provider :',
                             style: GoogleFonts.lato(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -530,7 +459,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           SizedBox(height: 8),
                           Text(
-                            'Email address : ',
+                            'Tax ID :',
                             style: GoogleFonts.lato(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -538,160 +467,27 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           SizedBox(height: 8),
                           Text(
-                            'เลขประจำตัวผู้เสียภาษี : ',
+                            'Email Address :',
                             style: GoogleFonts.lato(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'หมายเลขโทรศัพท์: ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Order number : ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Appointment Date : ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 3),
-                          SizedBox(height: 8),
-                          Text(
-                            'Address : ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 3),
-                          SizedBox(height: 8),
-                          Text(
-                            'Detail of work : ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 3),
-                          Text(
-                            'Wanranty :  ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 3),
-                          Text(
-                            'Total Price : ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 3),
-                          Text(
-                            'Payment method : ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 3),
-                          SizedBox(height: 5),
-                          Text(
-                            'ประวัติการเลื่อนการนัดหมาย : ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            '(ชื่อคนขอเลื่อนนัดหมาย)ขอเลื่อนการนัดหมาย',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            'วันเวลานัดหมายเดิม :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            'วันเวลานัดหมายใหม่ :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            'สถานะ :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Divider(thickness: 3),
-                          SizedBox(height: 5),
-                          Text(
-                            'รายละเอียดการดำเนินงาน : ',
-                            style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            'เข้างาน :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            'เลิกงาน :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            'รายละเอียดงานที่คืบหน้า / สำเร็จแล้ว :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            'อัตราเปอร์เซ็นของงานที่คืบหน้า / สำเร็จแล้ว :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            'รูปภาพ :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            'สถานะ :',
-                            style: GoogleFonts.lato(
-                              fontSize: 15,
                             ),
                           ),
                         ],
                       ),
+
+                      // Container(
+                      // margin: const EdgeInsets.only(right: 100),
+                      // child: TextFormField(
+                      // onChanged: (value) {},
+                      // decoration: InputDecoration(
+                      // prefixIcon: Icon(Icons.search),
+                      // border: OutlineInputBorder(
+                      // borderRadius: BorderRadius.circular(30),
+                      // ),
+                      // ),
+                      // ),
+                      // ),
                     ],
                   ),
                 ),
@@ -778,34 +574,318 @@ class _DashboardState extends State<Dashboard> {
 
   Container buildtransaction() {
     return Container(
-        height: 50,
-        child: GridView.count(
-          shrinkWrap: true,
-          physics: ScrollPhysics(),
-          crossAxisCount: 5,
-          children: [
-            Card(
-              color: Colors.redAccent,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Text('Order number : xxxxxxx'),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Order Details :',
+                style: GoogleFonts.fredokaOne(
+                  fontSize: 25,
+                ),
               ),
-            ),
-          ],
-
-          // child: ListView(
-          // shrinkWrap: true,
-          // physics: NeverScrollableScrollPhysics(),
-          // children: [
-          // Card(
-          // color: Colors.redAccent,
-          // child: Padding(
-          // padding: const EdgeInsets.all(23),
-          // child: Text('Order number : xxxxxxx'),
-          // ),
-          // ),
-          // ],
-          // ),
-        ));
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Shop name :',
+                  style: GoogleFonts.lato(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Customer name :',
+                  style: GoogleFonts.lato(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Row(
+                  children: [
+                    Text(
+                      'Email Address:',
+                      style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 400),
+                    Text(
+                      'Tax ID:',
+                      style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Row(
+                  children: [
+                    Text(
+                      'Phone number :',
+                      style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 300),
+                    Text(
+                      'Order number :',
+                      style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Appointment date :',
+                  style: GoogleFonts.lato(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Address :',
+                  style: GoogleFonts.lato(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Detail of work:',
+                  style: GoogleFonts.lato(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Warranty :',
+                  style: GoogleFonts.lato(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Row(
+                  children: [
+                    Text(
+                      'Total Price :',
+                      style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 300),
+                    Text(
+                      'Payment method :',
+                      style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 25),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Appointment history :',
+                  style: GoogleFonts.fredokaOne(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: DataTable(
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        'Request name',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Old Appointment ',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'New Appointment',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Status',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: [
+                    DataRow(
+                      cells: [
+                        DataCell(
+                          Text(
+                            'A dog',
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            'xxx',
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            'xxx',
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            'Waiting / Approve',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 25),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Processing :',
+                  style: GoogleFonts.fredokaOne(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: DataTable(
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        'Working hours',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Detail of work',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'percentage of work (%)',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Status',
+                        style: GoogleFonts.fredokaOne(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: [
+                    DataRow(
+                      cells: [
+                        DataCell(
+                          Text(
+                            'xx - xx',
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            'xxxxx',
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            'xx %',
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            'Waiting / Approve',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 25),
+              Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text(
+                  'Ref. file :',
+                  style: GoogleFonts.fredokaOne(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
