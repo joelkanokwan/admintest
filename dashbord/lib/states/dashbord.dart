@@ -434,6 +434,11 @@ class _DashboardState extends State<Dashboard> {
                               SizedBox(height: 30),
                               // buildtransaction(),
                               buildreport(),
+                              // SizedBox(height: 50),
+                              // Container(
+                                // height: 200,
+                                // child: DashBoardBarChart(),
+                              // ),
                               SizedBox(height: 50),
                               buildDetail(),
                             ],
@@ -1016,6 +1021,12 @@ class _DashboardState extends State<Dashboard> {
                   fontSize: 25,
                 ),
               ),
+              // Text(
+                // 'Yearly Turnover Report : (2022)',
+                // style: GoogleFonts.fredokaOne(
+                  // fontSize: 25,
+                // ),
+              // ),
               SizedBox(height: 100),
               Row(
                 children: [
