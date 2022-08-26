@@ -23,6 +23,19 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  List<String> kindofincomes = [
+    'kind 1',
+    'kind 2',
+    'kind 3',
+    'kind 4',
+    'kind 5',
+    'kind 6',
+    'kind 7',
+    'kind 8',
+  ];
+  int _value = 0;
+  int _vat = 0;
+  int _choose = 0;
   Map<String, double> dashboardpie = {
     'ChiangMai': 100000,
     'Chonburi': 50000,
@@ -449,7 +462,7 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          Divider(thickness: 1),
                           Text(
                             'Service provider :',
                             style: GoogleFonts.lato(
@@ -457,7 +470,7 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          Divider(thickness: 1),
                           Text(
                             'Tax ID :',
                             style: GoogleFonts.lato(
@@ -465,7 +478,7 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          Divider(thickness: 1),
                           Text(
                             'Email Address :',
                             style: GoogleFonts.lato(
@@ -473,6 +486,15 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                          Divider(thickness: 1),
+                          Text(
+                            'Amount :',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(thickness: 1),
                         ],
                       ),
 
@@ -488,6 +510,236 @@ class _DashboardState extends State<Dashboard> {
                       // ),
                       // ),
                       // ),
+
+                      Row(
+                        children: [
+                          DropdownButton<String>(
+                            hint: Text('Please choose kind of incomes'),
+                            items: kindofincomes
+                                .map((e) => DropdownMenuItem(
+                                      child: Text(e),
+                                      value: e,
+                                    ))
+                                .toList(),
+                            onChanged: (value) {},
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.add),
+                          ),
+                        ],
+                      ),
+
+                      Row(
+                        children: [
+                          Radio(
+                            activeColor: Colors.black,
+                            value: 1,
+                            groupValue: _value,
+                            onChanged: (value) {
+                              setState(() {
+                                _value = 1;
+                              });
+                            },
+                          ),
+                          Text(
+                            'Personel',
+                          ),
+                          SizedBox(width: 10),
+                          Radio(
+                            activeColor: Colors.black,
+                            value: 2,
+                            groupValue: _value,
+                            onChanged: (value) {
+                              setState(() {
+                                _value = 2;
+                              });
+                            },
+                          ),
+                          Text(
+                            'Corporation',
+                          ),
+                          SizedBox(width: 10),
+                          Radio(
+                            activeColor: Colors.black,
+                            value: 3,
+                            groupValue: _value,
+                            onChanged: (value) {
+                              setState(() {
+                                _value = 3;
+                              });
+                            },
+                          ),
+                          Text(
+                            'Other',
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio(
+                            activeColor: Colors.black,
+                            value: 1,
+                            groupValue: _vat,
+                            onChanged: (value) {
+                              setState(() {
+                                _vat = 1;
+                              });
+                            },
+                          ),
+                          Text(
+                            'Vat 7 %',
+                          ),
+                          SizedBox(width: 10),
+                          Radio(
+                            activeColor: Colors.black,
+                            value: 2,
+                            groupValue: _vat,
+                            onChanged: (value) {
+                              setState(() {
+                                _vat = 2;
+                              });
+                            },
+                          ),
+                          Text(
+                            'No Vat',
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio(
+                            activeColor: Colors.black,
+                            value: 1,
+                            groupValue: _choose,
+                            onChanged: (value) {
+                              setState(() {
+                                _choose = 1;
+                              });
+                            },
+                          ),
+                          Text(
+                            'included Vat',
+                          ),
+                          SizedBox(width: 10),
+                          Radio(
+                            activeColor: Colors.black,
+                            value: 2,
+                            groupValue: _choose,
+                            onChanged: (value) {
+                              setState(() {
+                                _choose = 2;
+                              });
+                            },
+                          ),
+                          Text(
+                            'Not included Vat',
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 1),
+
+                      Row(
+                        children: [
+                          Text(
+                            'Price before Vat :',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 1),
+
+                      Row(
+                        children: [
+                          Text(
+                            'Vat 7 % :',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 1),
+
+                      Row(
+                        children: [
+                          Text(
+                            'Withholding Tax :',
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 1),
+
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Save'),
+                      ),
+                      SizedBox(height: 30),
+                      Row(
+                        children: [
+                          Text(
+                            'Expense list (1)',
+                            style: GoogleFonts.fredokaOne(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 2),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Text(
+                            'Sofeware service',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Text(
+                            'Amount : 20000 Bath',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Text(
+                            'Service by : Dog company',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Text(
+                            '(Document upload)',
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                            ),
+                          ),
+                          
+                        ],
+                      ),
+                      Divider(thickness: 1)
                     ],
                   ),
                 ),
