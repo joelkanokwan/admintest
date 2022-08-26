@@ -340,7 +340,7 @@ Expanded buildPersonalData() {
                   'ได้รับการยกเว้น',
                   '',
                   '',
-                ]),
+                ]), 
                 buildRow([
                   '150001 - 300000',
                   '5%',

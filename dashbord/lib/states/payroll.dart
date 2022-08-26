@@ -473,6 +473,7 @@ class _PayRollState extends State<PayRoll> {
                         ),
                       ),
                       DataTable(
+                        
                         columns: [
                           DataColumn(
                             label: Text(

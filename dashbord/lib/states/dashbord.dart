@@ -23,6 +23,30 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  Map<String, double> revenuepie = {
+    'Profit / lose': 1000000,
+    'Vat': 70000,
+    'Withholding Tax': 500000,
+    'Expense': 200000,
+    'Allowance': 5000000,
+  };
+
+  Map<String, double> topprovincepie = {
+    'Bangkok': 10000,
+    'ChiangMai': 6500,
+    'Chonburi': 12000,
+    'Khonkan': 2000,
+    'Phuket': 20000,
+  };
+
+  Map<String, double> topservicepie = {
+    'Aircondition': 5000,
+    'Cleaning': 9000,
+    'Make up': 4000,
+    'Steel': 1000,
+    'Electricity': 5000,
+  };
+
   List<String> kindofincomes = [
     'kind 1',
     'kind 2',
@@ -408,7 +432,10 @@ class _DashboardState extends State<Dashboard> {
                             children: [
                               buildCalendar(),
                               SizedBox(height: 30),
-                              buildtransaction(),
+                              // buildtransaction(),
+                              buildreport(),
+                              SizedBox(height: 50),
+                              buildDetail(),
                             ],
                           ),
                         ],
@@ -464,7 +491,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           Divider(thickness: 1),
                           Text(
-                            'Service provider :',
+                            'Service Provider :',
                             style: GoogleFonts.lato(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -720,7 +747,7 @@ class _DashboardState extends State<Dashboard> {
                       Row(
                         children: [
                           Text(
-                            'Service by : Dog company',
+                            'Service Provider : Dog company',
                             style: GoogleFonts.lato(
                               fontSize: 15,
                             ),
@@ -736,7 +763,6 @@ class _DashboardState extends State<Dashboard> {
                               fontSize: 15,
                             ),
                           ),
-                          
                         ],
                       ),
                       Divider(thickness: 1)
@@ -820,6 +846,219 @@ class _DashboardState extends State<Dashboard> {
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(5.0),
         ),
+      ),
+    );
+  }
+
+  Container buildDetail() {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Total Revenue : 5000000 Baht',
+                style: GoogleFonts.fredokaOne(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Total Successfully Order',
+                style: GoogleFonts.fredokaOne(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Total Successfully Services',
+                style: GoogleFonts.fredokaOne(
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Profit : 1000000 Baht',
+                style: GoogleFonts.fredokaOne(
+                  fontSize: 18,
+                  color: Colors.green,
+                ),
+              ),
+              Text(
+                'Bangkok :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Aircondition : ',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Vat :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'ChiangMai :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Cleaning :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Withholding :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Chonburi :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Make up :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Expenses :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Khonkan :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Steel :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Allowance :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Phuket :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Electricity :',
+                style: GoogleFonts.lato(
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container buildreport() {
+    return Container(
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Monthly Turnover Report : (January 2022)',
+                style: GoogleFonts.fredokaOne(
+                  fontSize: 25,
+                ),
+              ),
+              SizedBox(height: 100),
+              Row(
+                children: [
+                  PieChart(
+                    dataMap: revenuepie,
+                    chartRadius: MediaQuery.of(context).size.width / 7,
+                    legendOptions:
+                        LegendOptions(legendPosition: LegendPosition.bottom),
+                    chartValuesOptions: ChartValuesOptions(
+                      showChartValues: true,
+                      showChartValuesInPercentage: true,
+                      showChartValuesOutside: true,
+                    ),
+                  ),
+                  SizedBox(width: 100),
+                  PieChart(
+                    dataMap: topprovincepie,
+                    chartRadius: MediaQuery.of(context).size.width / 7,
+                    legendOptions:
+                        LegendOptions(legendPosition: LegendPosition.bottom),
+                    chartValuesOptions: ChartValuesOptions(
+                      showChartValues: true,
+                      showChartValuesInPercentage: true,
+                      showChartValuesOutside: true,
+                    ),
+                  ),
+                  SizedBox(width: 100),
+                  PieChart(
+                    dataMap: topservicepie,
+                    chartRadius: MediaQuery.of(context).size.width / 7,
+                    legendOptions:
+                        LegendOptions(legendPosition: LegendPosition.bottom),
+                    chartValuesOptions: ChartValuesOptions(
+                      showChartValues: true,
+                      showChartValuesInPercentage: true,
+                      showChartValuesOutside: true,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
